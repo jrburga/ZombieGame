@@ -15,19 +15,6 @@ var current_door = null
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var velocity : Vector2
 func _process(delta):
-	if find_node("LightEnvironment"):
-		$LightEnvironment.texture_scale = light_scale
-	
-	if local_player:
-		$Sprite.light_mask = 0b100
-		if find_node("LightCharacter"):
-			$LightCharacter.enabled = true
-	else:
-		$Sprite.light_mask = 0b001
-		if find_node("LightCharacter"):
-			$LightCharacter.enabled = false
-
-	
 	if Engine.editor_hint:
 		return
 		
@@ -52,9 +39,6 @@ func _process(delta):
 	
 	var blend_pos = velocity.normalized().length_squared()
 	$AnimationTree.set("parameters/idle_walk/blend_position", blend_pos)
-	
-	
-
 
 func _on_InteractionArea_area_entered(area):
 	var door = area.get_parent()

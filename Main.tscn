@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Characters/Character2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Torch.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node2D"]
 
@@ -8,4 +9,11 @@
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
+[node name="Torch" parent="." instance=ExtResource( 2 )]
+position = Vector2( 42, -32 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
 [node name="Character2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -10, -9 )

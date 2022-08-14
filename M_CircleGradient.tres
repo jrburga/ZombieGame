@@ -1,0 +1,121 @@
+[gd_resource type="ShaderMaterial" load_steps=14 format=2]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=13]
+default_input_values = [ 0, 1.0, 1, 1.0 ]
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=15]
+uniform_name = "outer_radius"
+
+[sub_resource type="VisualShaderNodeVectorDistance" id=16]
+default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0.5, 0.5, 0.5 ) ]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=17]
+default_input_values = [ 0, 0.0, 1, 2.0 ]
+operator = 5
+
+[sub_resource type="VisualShaderNodeScalarOp" id=19]
+output_port_for_preview = 0
+default_input_values = [ 0, 0.0, 1, 5.0 ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=20]
+uniform_name = "multiplier"
+
+[sub_resource type="VisualShaderNodeScalarOp" id=21]
+output_port_for_preview = 0
+default_input_values = [ 0, 0.7, 1, 0.0 ]
+operator = 1
+
+[sub_resource type="VisualShaderNodeScalarSmoothStep" id=5]
+
+[sub_resource type="VisualShaderNodeScalarClamp" id=22]
+output_port_for_preview = 0
+
+[sub_resource type="VisualShaderNodeInput" id=6]
+output_port_for_preview = 0
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=11]
+uniform_name = "inner_radius"
+
+[sub_resource type="VisualShaderNodeScalarOp" id=12]
+default_input_values = [ 0, 1.0, 1, 0.0 ]
+operator = 1
+
+[sub_resource type="VisualShader" id=2]
+code = "shader_type canvas_item;
+uniform float multiplier;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:3
+	vec3 n_out3p0 = vec3(UV, 0.0);
+
+// Distance:14
+	vec3 n_in14p1 = vec3(0.50000, 0.50000, 0.50000);
+	float n_out14p0 = distance(n_out3p0, n_in14p1);
+
+// ScalarOp:19
+	float n_in19p0 = 0.70000;
+	float n_out19p0 = n_in19p0 - n_out14p0;
+
+// ScalarUniform:18
+	float n_out18p0 = multiplier;
+
+// ScalarOp:17
+	float n_out17p0 = n_out19p0 * n_out18p0;
+
+// ScalarClamp:20
+	float n_in20p1 = 0.00000;
+	float n_in20p2 = 1.00000;
+	float n_out20p0 = clamp(n_out17p0, n_in20p1, n_in20p2);
+
+// Output:0
+	COLOR.a = n_out20p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -344.318, 0 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 940, 80 )
+nodes/fragment/2/node = SubResource( 5 )
+nodes/fragment/2/position = Vector2( -180, 240 )
+nodes/fragment/3/node = SubResource( 6 )
+nodes/fragment/3/position = Vector2( -400, 360 )
+nodes/fragment/8/node = SubResource( 11 )
+nodes/fragment/8/position = Vector2( -640, 100 )
+nodes/fragment/9/node = SubResource( 12 )
+nodes/fragment/9/position = Vector2( -280, 60 )
+nodes/fragment/11/node = SubResource( 13 )
+nodes/fragment/11/position = Vector2( -360, 200 )
+nodes/fragment/13/node = SubResource( 15 )
+nodes/fragment/13/position = Vector2( -600, 340 )
+nodes/fragment/14/node = SubResource( 16 )
+nodes/fragment/14/position = Vector2( -220, 360 )
+nodes/fragment/15/node = SubResource( 17 )
+nodes/fragment/15/position = Vector2( -160, 560 )
+nodes/fragment/17/node = SubResource( 19 )
+nodes/fragment/17/position = Vector2( 400, 200 )
+nodes/fragment/18/node = SubResource( 20 )
+nodes/fragment/18/position = Vector2( 200, 540 )
+nodes/fragment/19/node = SubResource( 21 )
+nodes/fragment/19/position = Vector2( 40, 300 )
+nodes/fragment/20/node = SubResource( 22 )
+nodes/fragment/20/position = Vector2( 640, 200 )
+nodes/fragment/connections = PoolIntArray( 9, 0, 2, 0, 11, 0, 2, 1, 8, 0, 9, 1, 13, 0, 11, 1, 14, 0, 2, 2, 3, 0, 14, 0, 14, 0, 15, 0, 14, 0, 19, 1, 19, 0, 17, 0, 17, 0, 20, 0, 20, 0, 0, 1, 18, 0, 17, 1 )
+
+[resource]
+shader = SubResource( 2 )
+shader_param/multiplier = 10.0

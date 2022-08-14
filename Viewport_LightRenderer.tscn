@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://M_CircleGradient.tres" type="Material" id=1]
+[ext_resource path="res://Textures/white_128x128.png" type="Texture" id=2]
+
+[node name="Viewport" type="Viewport"]
+size = Vector2( 256, 256 )
+transparent_bg = true
+render_target_update_mode = 3
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 1 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+centered = false

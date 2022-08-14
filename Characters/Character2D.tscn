@@ -1,14 +1,18 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Textures/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Character2D.gd" type="Script" id=2]
-
-[sub_resource type="CapsuleShape2D" id=1]
-height = 4.0
+[ext_resource path="res://Viewport_LightRenderer.tscn" type="PackedScene" id=3]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 127, 204, 18, 21 )
+
+[sub_resource type="CapsuleShape2D" id=1]
+height = 4.0
+
+[sub_resource type="ViewportTexture" id=8]
+viewport_path = NodePath("Viewport")
 
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "idle"
@@ -28,13 +32,20 @@ loop = true
 script = ExtResource( 2 )
 speed = 100.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -12 )
-shape = SubResource( 1 )
-
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -10 )
 texture = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+position = Vector2( 0, -12 )
+shape = SubResource( 1 )
+
+[node name="Viewport" parent="." instance=ExtResource( 3 )]
+
+[node name="LightEnvironment" type="Light2D" parent="."]
+texture = SubResource( 8 )
+texture_scale = 0.5
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 4 )
