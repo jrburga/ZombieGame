@@ -18,22 +18,24 @@ func _process(delta):
 	if Engine.editor_hint:
 		return
 		
+	$WeaponNode.look_at($WeaponNode.get_global_mouse_position())
 	
+	$WeaponNode.rotation_degrees = fmod($WeaponNode.rotation_degrees, 360)
 	
-	$WeaponRoot.look_at($WeaponRoot.get_global_mouse_position())
-	
-	$WeaponRoot.rotation_degrees = fmod($WeaponRoot.rotation_degrees, 360)
-	
-	var mouse_delta =  $WeaponRoot.get_global_mouse_position() - $WeaponRoot.global_position
+	var mouse_delta =  $WeaponNode.get_global_mouse_position() - $WeaponNode.global_position
 	if mouse_delta.x >= 0:
-		$WeaponRoot.scale.y = 1
+		$WeaponNode.scale.y = 1
 		$SpriteHead.flip_h = false
 	else:
-		$WeaponRoot.scale.y = -1
+		$WeaponNode.scale.y = -1
 		$SpriteHead.flip_h = true
 	if Input.is_action_just_pressed("interact"):
 		if current_door:
 			current_door.toggle_state()
+			
+	if Input.is_action_just_pressed("attack_primary"):
+		print("trigger primary")
+		$WeaponNode.trigger_primary()
 		
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("up"):
