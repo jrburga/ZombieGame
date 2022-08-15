@@ -1,15 +1,28 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Textures/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Character2D.gd" type="Script" id=2]
 [ext_resource path="res://Viewport_LightRenderer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Textures/player-base.png" type="Texture" id=4]
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 127, 204, 18, 21 )
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 5, 9, 2, 2 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 8, 5, 6, 10 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 4 )
+region = Rect2( 9, 0, 4, 6 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 4 )
+region = Rect2( 1, 6, 3, 2 )
 
 [sub_resource type="CapsuleShape2D" id=1]
-height = 4.0
+radius = 3.02529
+height = 8.1799
 
 [sub_resource type="ViewportTexture" id=8]
 viewport_path = NodePath("Viewport")
@@ -30,20 +43,44 @@ loop = true
 
 [node name="Character2D" type="KinematicBody2D"]
 script = ExtResource( 2 )
-speed = 100.0
+speed = 25.0
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -10 )
-texture = SubResource( 2 )
+[node name="SpriteRoot" type="Node2D" parent="."]
+position = Vector2( 0, -7 )
+
+[node name="SpriteHandBack" type="Sprite" parent="SpriteRoot"]
+position = Vector2( 1, 0 )
+texture = SubResource( 11 )
+centered = false
+
+[node name="SpriteBody" type="Sprite" parent="SpriteRoot"]
+position = Vector2( 0, 2 )
+texture = SubResource( 12 )
+
+[node name="SpriteHead" type="Sprite" parent="."]
+position = Vector2( 0, -12 )
+texture = SubResource( 14 )
+
+[node name="WeaponRoot" type="Node2D" parent="."]
+position = Vector2( 0, -7 )
+rotation = -0.0750492
+
+[node name="SpriteHandFront" type="Sprite" parent="WeaponRoot"]
+position = Vector2( 3, -2 )
+texture = SubResource( 13 )
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+show_behind_parent = true
 light_mask = 0
-position = Vector2( 0, -12 )
+position = Vector2( 0, -7 )
+scale = Vector2( 0.991641, 0.983804 )
 shape = SubResource( 1 )
 
 [node name="Viewport" parent="." instance=ExtResource( 3 )]
 
 [node name="LightEnvironment" type="Light2D" parent="."]
+visible = false
 texture = SubResource( 8 )
 texture_scale = 0.5
 

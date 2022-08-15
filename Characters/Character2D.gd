@@ -18,6 +18,19 @@ func _process(delta):
 	if Engine.editor_hint:
 		return
 		
+	
+	
+	$WeaponRoot.look_at($WeaponRoot.get_global_mouse_position())
+	
+	$WeaponRoot.rotation_degrees = fmod($WeaponRoot.rotation_degrees, 360)
+	
+	var mouse_delta =  $WeaponRoot.get_global_mouse_position() - $WeaponRoot.global_position
+	if mouse_delta.x >= 0:
+		$WeaponRoot.scale.y = 1
+		$SpriteHead.flip_h = false
+	else:
+		$WeaponRoot.scale.y = -1
+		$SpriteHead.flip_h = true
 	if Input.is_action_just_pressed("interact"):
 		if current_door:
 			current_door.toggle_state()
@@ -29,10 +42,10 @@ func _process(delta):
 		velocity += Vector2.DOWN
 	if Input.is_action_pressed("left"):
 		velocity += Vector2.LEFT
-		$Sprite.flip_h = true
+		$SpriteRoot.scale.x = -1
 	if Input.is_action_pressed("right"):
 		velocity += Vector2.RIGHT
-		$Sprite.flip_h = false
+		$SpriteRoot.scale.x = 1
 	
 	velocity = velocity.normalized() * speed
 	move_and_slide(velocity)
