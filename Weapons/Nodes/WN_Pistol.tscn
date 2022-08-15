@@ -10,4 +10,4 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="BulletRoot" type="Node2D" parent="Sprite"]
-position = Vector2( 4, 2 )
+position = Vector2( 5, 2 )

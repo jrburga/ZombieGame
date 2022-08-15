@@ -13,6 +13,17 @@ var weapon_child = null
 func _ready():
 	set_weapon(weapon_res)
 	
+func _unhandled_input(event):
+	if event is InputEvent:
+		if event.is_pressed() and event.is_action("cheat_swap_weapon"):
+			var wdb = WeaponsDB.get_weapons_db(self) as WeaponsDB
+			var num_weapons = wdb.get_num_weapons()
+			var index = wdb.find(weapon_res)
+			index = (index + 1) % num_weapons
+			var new_weapon = wdb.get_weapon_at(index)
+			print(index, " - ", new_weapon.display_name)
+			set_weapon(new_weapon)
+	
 func trigger_primary():
 	if bullet_root:
 		var bullet = BulletScene.instance() as Bullet

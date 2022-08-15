@@ -8,3 +8,6 @@
 position = Vector2( -9, -6 )
 texture = ExtResource( 1 )
 centered = false
+
+[node name="BulletRoot" type="Node2D" parent="Sprite"]
+position = Vector2( 16, 3 )
