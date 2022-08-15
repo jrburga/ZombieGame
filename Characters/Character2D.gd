@@ -8,7 +8,7 @@ export(float) var light_scale = 0.5
 export(float) var speed = 10
 func _ready():
 	var state_machine = $AnimationTree.get("parameters/playback")
-	state_machine.travel("idle_walk")
+#	state_machine.travel("idle_walk")
 	
 var current_door = null
 
@@ -51,7 +51,7 @@ func _process(delta):
 	move_and_slide(velocity)
 	
 	var blend_pos = velocity.normalized().length_squared()
-	$AnimationTree.set("parameters/idle_walk/blend_position", blend_pos)
+#	$AnimationTree.set("parameters/idle_walk/blend_position", blend_pos)
 
 func _on_InteractionArea_area_entered(area):
 	var door = area.get_parent()
