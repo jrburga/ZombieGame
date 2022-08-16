@@ -7,6 +7,7 @@
 extents = Vector2( 0.5, 0.5 )
 
 [node name="Bullet" type="KinematicBody2D"]
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Bullet" type="Sprite" parent="."]
@@ -14,12 +15,21 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
-disabled = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.1
 one_shot = true
-autostart = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 5
+lifetime = 0.25
+one_shot = true
+spread = 180.0
+initial_velocity = 40.86
+initial_velocity_random = 0.7
+color = Color( 0.42, 0.09604, 0.0462, 1 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

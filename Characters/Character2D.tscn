@@ -15,9 +15,8 @@ region = Rect2( 8, 5, 6, 10 )
 atlas = ExtResource( 4 )
 region = Rect2( 9, 0, 4, 6 )
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 3.02529
-height = 8.1799
+[sub_resource type="CircleShape2D" id=15]
+radius = 2.01686
 
 [sub_resource type="ViewportTexture" id=8]
 viewport_path = NodePath("Viewport")
@@ -61,9 +60,9 @@ bullet_speed = 200.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true
 light_mask = 0
-position = Vector2( 0, -7 )
+position = Vector2( 0, -1 )
 scale = Vector2( 0.991641, 0.983804 )
-shape = SubResource( 1 )
+shape = SubResource( 15 )
 
 [node name="Viewport" parent="." instance=ExtResource( 3 )]
 
