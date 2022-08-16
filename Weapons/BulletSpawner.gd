@@ -11,11 +11,11 @@ func _ready():
 	pass # Replace with function body.
 	
 
-func spawn_bullet():
-
+func spawn_bullet(target_position : Vector2):
+	
 	var bullet = BulletScene.instance() as Bullet
 	bullet.global_position = global_position
-	var delta = get_global_mouse_position() - global_position
+	var delta = target_position - global_position
 	var direction = delta.normalized()
 #		bullet.velocity = direction * bullet_speed
 #		bullet.max_distance = weapon_res.hit_range
