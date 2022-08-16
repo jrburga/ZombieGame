@@ -16,3 +16,4 @@ centered = false
 position = Vector2( 13, 2 )
 bullets_spawned = 5
 spread = 20.0
+cooldown = 0.5

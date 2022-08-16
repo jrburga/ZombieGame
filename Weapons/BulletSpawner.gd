@@ -20,10 +20,10 @@ var firing = false
 func spawn_bullets(target_position : Vector2):
 	if firing:
 		return
-	firing = true
+	
 	if $TimerCooldown.time_left > 0:
 		return
-	
+		
 	for index in bullets_spawned:
 		var bullet = BulletScene.instance() as Bullet
 		bullet.lifetime = bullet_lifetime

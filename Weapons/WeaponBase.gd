@@ -26,7 +26,6 @@ func trigger_primary_pressed():
 			bullet_spawner.spawn_bullets(get_global_mouse_position())
 		if one_shot:
 			break
-		print("yielding to shoot some more!")
 		yield(bullet_spawner.find_node("TimerCooldown"), "timeout")
 
 func trigger_primary_released():
