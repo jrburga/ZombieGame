@@ -2,10 +2,11 @@ extends KinematicBody2D
 class_name Bullet
 
 var velocity : Vector2 = Vector2(0, 0)
-var max_distance = Vector2(0, 0)
+var lifetime = 0.25
 
 func _ready():
-	var offset = velocity.normalized() * 10
+	$Timer.start(lifetime)
+	var offset = velocity.normalized() * 2
 	$RayCast2D.position = -offset 
 	$RayCast2D.cast_to = offset
 
@@ -23,7 +24,7 @@ func _on_Timer_timeout():
 func hit_hurt_area():
 	velocity = Vector2(0, 0)
 	$Bullet.visible = false
-	$Timer.start(0.5)
+	$Timer.start(0.25)
 	$CPUParticles2D.emitting = true
 	
 

@@ -32,9 +32,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact"):
 		if current_door:
 			current_door.toggle_state()
-			
-	if Input.is_action_just_pressed("attack_primary"):
-		$WeaponNode.weapon_child.trigger_primary()
 		
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("up"):

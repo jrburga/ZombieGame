@@ -7,3 +7,9 @@
 script = ExtResource( 1 )
 BulletScene = ExtResource( 2 )
 bullet_speed = 5.0
+
+[node name="TimerCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerAutoFire" type="Timer" parent="."]
+one_shot = true
