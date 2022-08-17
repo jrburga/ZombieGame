@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Textures/sprite_zombie.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Zombie2D.gd" type="Script" id=2]
+[ext_resource path="res://Characters/ValueNode.gd" type="Script" id=3]
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
@@ -30,6 +31,9 @@ extents = Vector2( 2, 2 )
 
 [node name="Zombie2D" type="KinematicBody2D"]
 script = ExtResource( 2 )
+
+[node name="HealthNode" type="Node" parent="."]
+script = ExtResource( 3 )
 
 [node name="SpriteRoot" type="Node2D" parent="."]
 
@@ -71,3 +75,5 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtAreaHead2D"]
 position = Vector2( 0, -12 )
 shape = SubResource( 7 )
+
+[connection signal="on_current_value_changed" from="HealthNode" to="." method="_on_HealthNode_on_current_value_changed"]

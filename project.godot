@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Util.gd"
 }, {
+"base": "Node",
+"class": "ValueNode",
+"language": "GDScript",
+"path": "res://Characters/ValueNode.gd"
+}, {
 "base": "Node2D",
 "class": "WeaponBase",
 "language": "GDScript",
@@ -49,6 +54,7 @@ _global_script_class_icons={
 "BulletSpawner": "",
 "Character2D": "",
 "Util": "",
+"ValueNode": "",
 "WeaponBase": "",
 "WeaponNode": "",
 "WeaponResource": ""
