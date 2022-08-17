@@ -18,10 +18,8 @@ func _ready():
 			wd.weapon_resource = wdb.get_weapon_at(index)
 			inventory.add_weapon(wd)
 			
-		print('has inventory', inventory.weapons)
 		var weapon = inventory.get_weapon(0)
 		if weapon:
-			print('has weapon: ', weapon)
 			set_weapon(weapon)
 	
 func _unhandled_input(event):

@@ -21,13 +21,13 @@ var weapon_details : WeaponDetails
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	ammo_node = ValueNode.new() as Node
+	ammo_node = ValueNode.new() as ValueNode
+	ammo_node.min_value = 0
+	ammo_node.max_value = weapon_details.weapon_resource.magazine_size
+	ammo_node.current_value = weapon_details.current_ammo
 	ammo_node.name = "AmmoNode"
 	add_child(ammo_node)
-	ammo_node.min_value = 0
-	ammo_node.max_value = 10
-	ammo_node.current_value = weapon_details.current_ammo
-	ammo_node.connect("on_value_changed", self, "_AmmoNode_on_value_changed")
+	ammo_node.connect("current_value_changed", self, "_AmmoNode_on_value_changed")
 	
 func set_current_ammo(value):
 	print('update ammo: ', value)

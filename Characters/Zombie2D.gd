@@ -31,6 +31,6 @@ func begin_die():
 		yield(get_tree().create_timer(.1), "timeout")
 	queue_free()
 
-func _on_HealthNode_on_current_value_changed(prev_value, current_value, value_node):
+func _on_HealthNode_current_value_changed(prev_value, current_value, value_node):
 	if current_value == 0:
 		begin_die()

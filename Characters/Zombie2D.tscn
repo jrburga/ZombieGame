@@ -76,4 +76,4 @@ collision_mask = 0
 position = Vector2( 0, -12 )
 shape = SubResource( 7 )
 
-[connection signal="on_current_value_changed" from="HealthNode" to="." method="_on_HealthNode_on_current_value_changed"]
+[connection signal="current_value_changed" from="HealthNode" to="." method="_on_HealthNode_current_value_changed"]

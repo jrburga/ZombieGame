@@ -25,7 +25,10 @@ func _on_Timer_timeout():
 func hit_hurt_area(hurt_area : Node2D):
 	if hurt_area:
 		var health_node = hurt_area.owner.find_node("HealthNode") as ValueNode
-		health_node.update_value(-10)
+		if health_node:
+			health_node.update_value(-10)
+		else:
+			push_warning("NO HEALTH NODE ON ZOMBIE")
 	velocity = Vector2(0, 0)
 	$Bullet.visible = false
 	$Timer.start(0.25)
