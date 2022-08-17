@@ -1,0 +1,130 @@
+{ "frames": {
+   "Grenade launcher reload 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 100
+   },
+   "Grenade launcher reload 1.aseprite": {
+    "frame": { "x": 14, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 100
+   },
+   "Grenade launcher reload 2.aseprite": {
+    "frame": { "x": 28, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 100
+   },
+   "Grenade launcher reload 3.aseprite": {
+    "frame": { "x": 42, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 100
+   },
+   "Grenade launcher reload 4.aseprite": {
+    "frame": { "x": 56, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 100
+   },
+   "Grenade launcher reload 5.aseprite": {
+    "frame": { "x": 70, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 100
+   },
+   "Grenade launcher reload 6.aseprite": {
+    "frame": { "x": 84, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 170
+   },
+   "Grenade launcher reload 7.aseprite": {
+    "frame": { "x": 98, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 100
+   },
+   "Grenade launcher reload 8.aseprite": {
+    "frame": { "x": 112, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 100
+   },
+   "Grenade launcher reload 9.aseprite": {
+    "frame": { "x": 126, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 100
+   },
+   "Grenade launcher reload 10.aseprite": {
+    "frame": { "x": 140, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 100
+   },
+   "Grenade launcher reload 11.aseprite": {
+    "frame": { "x": 154, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 100
+   },
+   "Grenade launcher reload 12.aseprite": {
+    "frame": { "x": 168, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 170
+   },
+   "Grenade launcher reload 13.aseprite": {
+    "frame": { "x": 182, "y": 0, "w": 14, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 13 },
+    "sourceSize": { "w": 14, "h": 13 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.39-x64",
+  "image": "Grenade_launcher-Sheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 196, "h": 13 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

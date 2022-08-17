@@ -1,0 +1,97 @@
+{ "frames": {
+   "Sniper reload 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 22, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 13 },
+    "sourceSize": { "w": 22, "h": 13 },
+    "duration": 100
+   },
+   "Sniper reload 1.aseprite": {
+    "frame": { "x": 22, "y": 0, "w": 22, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 13 },
+    "sourceSize": { "w": 22, "h": 13 },
+    "duration": 100
+   },
+   "Sniper reload 2.aseprite": {
+    "frame": { "x": 44, "y": 0, "w": 22, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 13 },
+    "sourceSize": { "w": 22, "h": 13 },
+    "duration": 100
+   },
+   "Sniper reload 3.aseprite": {
+    "frame": { "x": 66, "y": 0, "w": 22, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 13 },
+    "sourceSize": { "w": 22, "h": 13 },
+    "duration": 100
+   },
+   "Sniper reload 4.aseprite": {
+    "frame": { "x": 88, "y": 0, "w": 22, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 13 },
+    "sourceSize": { "w": 22, "h": 13 },
+    "duration": 100
+   },
+   "Sniper reload 5.aseprite": {
+    "frame": { "x": 110, "y": 0, "w": 22, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 13 },
+    "sourceSize": { "w": 22, "h": 13 },
+    "duration": 100
+   },
+   "Sniper reload 6.aseprite": {
+    "frame": { "x": 132, "y": 0, "w": 22, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 13 },
+    "sourceSize": { "w": 22, "h": 13 },
+    "duration": 100
+   },
+   "Sniper reload 7.aseprite": {
+    "frame": { "x": 154, "y": 0, "w": 22, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 13 },
+    "sourceSize": { "w": 22, "h": 13 },
+    "duration": 100
+   },
+   "Sniper reload 8.aseprite": {
+    "frame": { "x": 176, "y": 0, "w": 22, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 13 },
+    "sourceSize": { "w": 22, "h": 13 },
+    "duration": 100
+   },
+   "Sniper reload 9.aseprite": {
+    "frame": { "x": 198, "y": 0, "w": 22, "h": 13 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 22, "h": 13 },
+    "sourceSize": { "w": 22, "h": 13 },
+    "duration": 200
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.39-x64",
+  "format": "RGBA8888",
+  "size": { "w": 220, "h": 13 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
