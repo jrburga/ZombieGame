@@ -28,9 +28,10 @@ func spawn_bullets(target_position : Vector2):
 		var bullet = BulletScene.instance() as Bullet
 		bullet.lifetime = bullet_lifetime
 		bullet.global_position = global_position
-		var delta = target_position - owner.global_position
-		var direction = delta.normalized()
 		
+		var delta = target_position - owner.global_position
+		var direction :Vector2 = delta.normalized()
+		bullet.rotation = direction.angle()
 		var angle_deg = 2 * randf() * spread - spread
 		var angle_rad = deg2rad(angle_deg)
 		
