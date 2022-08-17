@@ -37,6 +37,7 @@ func _unhandled_input(event):
 func set_weapon(in_weapon_details : WeaponDetails):
 	if weapon_child:
 		remove_child(weapon_child)
+		weapon_child.queue_free()
 	weapon_child = null
 	weapon_details = in_weapon_details
 	if weapon_details == null:

@@ -87,6 +87,7 @@ func reload_pressed():
 	if state != IDLE:
 		return
 
+	state = RELOADING
 	reloading = true
 	for frame in range(1, $Sprite.hframes):
 		$Sprite.frame = frame
@@ -94,6 +95,7 @@ func reload_pressed():
 	set_current_ammo(10)
 	$Sprite.frame = 0
 	reloading = false
+	state = IDLE
 
 func trigger_primary_released():
 	trigger_pressed = false
