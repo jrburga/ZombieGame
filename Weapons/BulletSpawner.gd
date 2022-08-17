@@ -9,12 +9,11 @@ export(float) var seconds_per_bullet = 0
 export(float) var spread = 0
 export(float) var cooldown = 0
 
-var weapon_res : WeaponResource
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 	
+
 
 var firing = false
 func spawn_bullets(target_position : Vector2):

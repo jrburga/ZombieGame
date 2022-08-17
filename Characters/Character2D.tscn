@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Weapons/Resources/WR_Pistol.tres" type="Resource" id=1]
 [ext_resource path="res://Characters/Character2D.gd" type="Script" id=2]
@@ -6,6 +6,14 @@
 [ext_resource path="res://Textures/player-base.png" type="Texture" id=4]
 [ext_resource path="res://Weapons/WeaponNode.gd" type="Script" id=5]
 [ext_resource path="res://Weapons/Bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Characters/InventoryNode.gd" type="Script" id=7]
+[ext_resource path="res://Weapons/WeaponDetails.gd" type="Script" id=8]
+
+[sub_resource type="Resource" id=16]
+resource_local_to_scene = true
+script = ExtResource( 8 )
+current_ammo = 10
+weapon_resource = ExtResource( 1 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 4 )
@@ -39,6 +47,10 @@ loop = true
 script = ExtResource( 2 )
 speed = 25.0
 
+[node name="InventoryNode" type="Node" parent="."]
+script = ExtResource( 7 )
+weapons = [ SubResource( 16 ) ]
+
 [node name="SpriteRoot" type="Node2D" parent="."]
 position = Vector2( 0, -7 )
 
@@ -53,9 +65,7 @@ texture = SubResource( 14 )
 [node name="WeaponNode" type="Node2D" parent="."]
 position = Vector2( 0, -7 )
 script = ExtResource( 5 )
-weapon_res = ExtResource( 1 )
 BulletScene = ExtResource( 6 )
-bullet_speed = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true
