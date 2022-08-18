@@ -11,10 +11,8 @@ export(float) var cooldown = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	return 
 	
-
-
 var firing = false
 func spawn_bullets(target_position : Vector2):
 	if firing:
@@ -42,7 +40,8 @@ func spawn_bullets(target_position : Vector2):
 		var damage_details = DamageDetails.new(owner.get_weapon_resource())
 		damage_details.knock_back_direction = direction
 		bullet.damage_details = damage_details
-		get_node('/root').add_child(bullet)
+		bullet.set_as_toplevel(true)
+		add_child(bullet)
 		
 		if seconds_per_bullet > 0:
 			$TimerAutoFire.start(seconds_per_bullet)
