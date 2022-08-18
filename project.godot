@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "AnimationPlayer",
+"class": "AespritePlayer",
+"language": "GDScript",
+"path": "res://Weapons/Nodes/AsepritePlayer.gd"
+}, {
+"base": "Reference",
+"class": "Aseprite",
+"language": "GDScript",
+"path": "res://Animation/Aesprite.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Bullet",
 "language": "GDScript",
@@ -65,6 +75,8 @@ _global_script_classes=[ {
 "path": "res://Weapons/WeaponResource.gd"
 } ]
 _global_script_class_icons={
+"AespritePlayer": "",
+"Aseprite": "",
 "Bullet": "",
 "BulletSpawner": "",
 "CameraFollow2D": "",
