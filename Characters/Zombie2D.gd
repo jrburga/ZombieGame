@@ -30,6 +30,9 @@ func begin_die():
 		modulate.a *= .8
 		yield(get_tree().create_timer(.1), "timeout")
 	queue_free()
+	
+func take_damage(delta):
+	$HealthNode.update_value(delta)
 
 func _on_HealthNode_current_value_changed(prev_value, current_value, value_node):
 	if current_value == 0:

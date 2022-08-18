@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Weapons/BulletSpawner.gd" type="Script" id=1]
-[ext_resource path="res://Weapons/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Weapons/Bullets/BulletSpawner.gd" type="Script" id=1]
+[ext_resource path="res://Weapons/Bullets/Bullet.tscn" type="PackedScene" id=2]
 
 [node name="BulletSpawner" type="Node2D"]
 script = ExtResource( 1 )

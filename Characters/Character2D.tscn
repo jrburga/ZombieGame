@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Weapons/Resources/WR_Pistol.tres" type="Resource" id=1]
 [ext_resource path="res://Characters/Character2D.gd" type="Script" id=2]
 [ext_resource path="res://Viewport_LightRenderer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Textures/player-base.png" type="Texture" id=4]
 [ext_resource path="res://Weapons/WeaponNode.gd" type="Script" id=5]
-[ext_resource path="res://Weapons/Bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Weapons/Bullets/Bullet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/InventoryNode.gd" type="Script" id=7]
 [ext_resource path="res://Weapons/WeaponDetails.gd" type="Script" id=8]
+[ext_resource path="res://Characters/ValueNode.gd" type="Script" id=9]
 
 [sub_resource type="Resource" id=16]
 resource_local_to_scene = true
@@ -51,6 +52,9 @@ speed = 25.0
 script = ExtResource( 7 )
 weapons = [ SubResource( 16 ) ]
 
+[node name="HealthNode" type="Node" parent="."]
+script = ExtResource( 9 )
+
 [node name="SpriteRoot" type="Node2D" parent="."]
 position = Vector2( 0, -7 )
 
@@ -89,3 +93,5 @@ parameters/playback = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 3 )
+
+[connection signal="current_value_changed" from="HealthNode" to="." method="_on_HealthNode_current_value_changed"]

@@ -11,3 +11,4 @@ export(float) var reload_time_sec : float = 1.0
 export(float) var hit_range : float = 10.0
 export(float) var hit_spread : float = 0.0
 
+export(Resource) var damage_details = null
