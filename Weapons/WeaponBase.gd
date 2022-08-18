@@ -9,7 +9,6 @@ enum {
 
 export(bool) var one_shot = true
 var trigger_pressed = false
-var reloading = false
 
 var state = IDLE
 
@@ -88,13 +87,10 @@ func reload_pressed():
 		return
 
 	state = RELOADING
-	reloading = true
-	for frame in range(1, $Sprite.hframes):
-		$Sprite.frame = frame
-		yield(get_tree().create_timer(.05), "timeout")
+	$AnimationPlayer.play("reload")
+	yield($AnimationPlayer, "animation_finished")
 	set_current_ammo(10)
 	$Sprite.frame = 0
-	reloading = false
 	state = IDLE
 
 func trigger_primary_released():
