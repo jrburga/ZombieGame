@@ -3,46 +3,56 @@ extends Node2D
 class_name WeaponNode
 
 
-export(Resource) var weapon_res
+export(Resource) var weapon_details
 export(PackedScene) var BulletScene
-export(float) var bullet_speed = 100
 
-var bullet_root : Node2D = null
 var weapon_child = null
 
 func _ready():
-	set_weapon(weapon_res)
+	var inventory = owner.find_node("InventoryNode") as InventoryNode
+	if inventory:
+		var wdb = WeaponsDB.get_weapons_db(self) as WeaponsDB
+		for index in wdb.get_num_weapons():
+			var wd = WeaponDetails.new()
+			wd.current_ammo = 10
+			wd.weapon_resource = wdb.get_weapon_at(index)
+			inventory.add_weapon(wd)
+			
+		var weapon = inventory.get_weapon(0)
+		if weapon:
+			set_weapon(weapon)
 	
 func _unhandled_input(event):
 	if event is InputEvent:
 		if event.is_pressed() and event.is_action("cheat_swap_weapon"):
-			var wdb = WeaponsDB.get_weapons_db(self) as WeaponsDB
-			var num_weapons = wdb.get_num_weapons()
-			var index = wdb.find(weapon_res)
-			index = (index + 1) % num_weapons
-			var new_weapon = wdb.get_weapon_at(index)
-			print(index, " - ", new_weapon.display_name)
-			set_weapon(new_weapon)
+			var inventory = owner.find_node("InventoryNode") as InventoryNode
+			if inventory:
+				var current_index = inventory.weapons.find(weapon_details)
+				var num_weapons = inventory.weapons.size()
+				
+				var new_index = (current_index + 1) % num_weapons
+				set_weapon(inventory.get_weapon(new_index))
+
 	
-func set_weapon(in_weapon_res : WeaponResource):
+func set_weapon(in_weapon_details : WeaponDetails):
 	if weapon_child:
 		remove_child(weapon_child)
+		weapon_child.queue_free()
 	weapon_child = null
-	bullet_root = null
-	weapon_res = in_weapon_res
-	
+	weapon_details = in_weapon_details
+	if weapon_details == null:
+		return
+		
+	var weapon_res = weapon_details.weapon_resource
 	if weapon_res:
-		if weapon_res is WeaponResource:
-			weapon_child = weapon_res.WeaponScene.instance()
-			add_child(weapon_child)
-			
+		weapon_child = weapon_res.WeaponScene.instance()
+		
 	if weapon_child:
-		bullet_root = weapon_child.find_node("BulletRoot")
-		weapon_child.weapon_res = weapon_res
+		weapon_child.weapon_details = weapon_details
+		add_child(weapon_child)
 			
 func remove_weapon():
 	if weapon_child:
 		remove_child(weapon_child)
 	weapon_child = null
-	bullet_root = null
 

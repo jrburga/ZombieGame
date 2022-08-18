@@ -19,20 +19,40 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Weapons/BulletSpawner.gd"
 }, {
+"base": "Camera2D",
+"class": "CameraFollow2D",
+"language": "GDScript",
+"path": "res://Main/CameraFollow2D.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Character2D",
 "language": "GDScript",
 "path": "res://Characters/Character2D.gd"
 }, {
+"base": "Node",
+"class": "InventoryNode",
+"language": "GDScript",
+"path": "res://Characters/InventoryNode.gd"
+}, {
 "base": "Object",
 "class": "Util",
 "language": "GDScript",
-"path": "res://Util.gd"
+"path": "res://Scripts/Util.gd"
+}, {
+"base": "Node",
+"class": "ValueNode",
+"language": "GDScript",
+"path": "res://Characters/ValueNode.gd"
 }, {
 "base": "Node2D",
 "class": "WeaponBase",
 "language": "GDScript",
 "path": "res://Weapons/WeaponBase.gd"
+}, {
+"base": "Resource",
+"class": "WeaponDetails",
+"language": "GDScript",
+"path": "res://Weapons/WeaponDetails.gd"
 }, {
 "base": "Node2D",
 "class": "WeaponNode",
@@ -47,9 +67,13 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Bullet": "",
 "BulletSpawner": "",
+"CameraFollow2D": "",
 "Character2D": "",
+"InventoryNode": "",
 "Util": "",
+"ValueNode": "",
 "WeaponBase": "",
+"WeaponDetails": "",
 "WeaponNode": "",
 "WeaponResource": ""
 }
@@ -57,7 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ZombieGame"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Main/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
