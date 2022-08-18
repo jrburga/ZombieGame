@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Weapons/Textures/AT_RPG.tres" type="Texture" id=1]
 [ext_resource path="res://Weapons/WeaponBase.gd" type="Script" id=2]
-[ext_resource path="res://Weapons/Nodes/AsepritePlayer.gd" type="Script" id=3]
+[ext_resource path="res://Animation/AsepritePlayer.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 step = 0.01

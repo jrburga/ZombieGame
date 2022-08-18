@@ -38,6 +38,10 @@ func spawn_bullets(target_position : Vector2):
 		
 		bullet.velocity = direction * bullet_speed
 		
+		
+		var damage_details = DamageDetails.new(owner.get_weapon_resource())
+		damage_details.knock_back_direction = direction
+		bullet.damage_details = damage_details
 		get_node('/root').add_child(bullet)
 		
 		if seconds_per_bullet > 0:

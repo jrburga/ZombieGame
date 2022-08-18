@@ -14,8 +14,9 @@ func _ready():
 		var wdb = WeaponsDB.get_weapons_db(self) as WeaponsDB
 		for index in wdb.get_num_weapons():
 			var wd = WeaponDetails.new()
-			wd.current_ammo = 10
+			
 			wd.weapon_resource = wdb.get_weapon_at(index)
+			wd.current_ammo = wd.weapon_resource.magazine_size
 			inventory.add_weapon(wd)
 			
 		var weapon = inventory.get_weapon(0)

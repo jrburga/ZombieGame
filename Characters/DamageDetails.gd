@@ -1,11 +1,19 @@
-extends Resource
+extends Reference
 class_name DamageDetails
 
-export(float) var delta_health = 0
+func _init(weapon_resource : WeaponResource):
+	delta_health = -weapon_resource.damage_per_bullet
+	knock_back = weapon_resource.knock_back
+	knock_back_power = weapon_resource.knock_back_power
+	stun = weapon_resource.stun
+	stun_time = weapon_resource.stun_time
+	
+var delta_health = 0
 
-export(float) var knock_back = false
-export(float) var knock_back_power = 0
+var knock_back : bool = false
+var knock_back_direction : Vector2 = Vector2()
+var knock_back_power : float = 0
 
-export(float) var stun = false
-export(float) var stun_time = 0
+var stun : bool = false
+var stun_time : float = 0
 

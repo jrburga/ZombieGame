@@ -3,6 +3,7 @@ class_name Bullet
 
 var velocity : Vector2 = Vector2(0, 0)
 var lifetime = 0.25
+var damage_details = null
 
 func _ready():
 	$Timer.start(lifetime)
@@ -24,7 +25,7 @@ func _on_Timer_timeout():
 
 func hit_hurt_area(hurt_area : Node2D):
 	if hurt_area:
-		var health_node = hurt_area.owner.take_damage(-10)
+		var health_node = hurt_area.owner.take_damage(damage_details)
 	velocity = Vector2(0, 0)
 	$Bullet.visible = false
 	$Timer.start(0.25)

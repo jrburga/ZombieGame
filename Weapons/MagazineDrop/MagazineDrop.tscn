@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Weapons/MagazineDrop/MagazineDrop.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="LineShape2D" id=1]
+
+[node name="MagazineDrop" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="MagBody2D" type="RigidBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="MagBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagBody2D"]
+position = Vector2( 0, -78 )
+shape = SubResource( 2 )
+
+[node name="FloorBody2D" type="KinematicBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorBody2D"]
+shape = SubResource( 1 )
