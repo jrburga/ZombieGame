@@ -1,0 +1,50 @@
+{ "frames": {
+   "health_vile1 0.png": {
+    "frame": { "x": 0, "y": 0, "w": 27, "h": 97 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 27, "h": 97 },
+    "sourceSize": { "w": 27, "h": 97 },
+    "duration": 100
+   },
+   "health_vile1 1.png": {
+    "frame": { "x": 27, "y": 0, "w": 27, "h": 97 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 27, "h": 97 },
+    "sourceSize": { "w": 27, "h": 97 },
+    "duration": 100
+   },
+   "health_vile1 2.png": {
+    "frame": { "x": 54, "y": 0, "w": 27, "h": 97 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 27, "h": 97 },
+    "sourceSize": { "w": 27, "h": 97 },
+    "duration": 100
+   },
+   "health_vile1 3.png": {
+    "frame": { "x": 81, "y": 0, "w": 27, "h": 97 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 27, "h": 97 },
+    "sourceSize": { "w": 27, "h": 97 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.39-x64",
+  "image": "health_vile1-sheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 108, "h": 97 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
