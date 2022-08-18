@@ -5,15 +5,17 @@
 [ext_resource path="res://UI/HealthBar.gd" type="Script" id=3]
 
 [node name="HealthBar" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = -925.0
+margin_bottom = -434.0
+mouse_filter = 2
 script = ExtResource( 3 )
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
 margin_left = 1.0
 margin_top = -3.0
-margin_right = 41.0
+margin_right = 28.0
 margin_bottom = 94.0
+mouse_filter = 2
 value = 26.0
 texture_progress = ExtResource( 2 )
 fill_mode = 3
@@ -23,4 +25,5 @@ margin_left = 1.0
 margin_top = -3.0
 margin_right = 28.0
 margin_bottom = 94.0
+mouse_filter = 2
 texture = ExtResource( 1 )

@@ -120,10 +120,10 @@ WeaponsDB="*res://Autoload/WeaponsDB.gd"
 
 [display]
 
-window/size/width=320
-window/size/height=160
-window/size/test_width=1024
-window/size/test_height=600
+window/size/width=960
+window/size/height=540
+window/size/test_width=960
+window/size/test_height=540
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

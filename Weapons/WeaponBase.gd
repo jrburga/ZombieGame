@@ -70,6 +70,7 @@ func _AmmoNode_on_value_changed(prev_value, new_value, value_node):
 	weapon_details.current_ammo = new_value
 
 func _unhandled_input(event):
+	print('weapon detect input')
 	if event is InputEvent:
 		if event.is_action_pressed("attack_primary"):
 			trigger_primary_pressed()
@@ -81,7 +82,7 @@ func _unhandled_input(event):
 
 func trigger_primary_pressed():
 	trigger_pressed = true
-	
+	print('firing1')
 	if state != IDLE:
 		return
 		
