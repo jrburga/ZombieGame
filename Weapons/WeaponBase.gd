@@ -13,6 +13,7 @@ var trigger_pressed = false
 var state = IDLE
 
 var current_ammo = 0 setget set_current_ammo, get_current_ammo
+var max_ammo = 0 setget set_max_ammo, get_max_ammo
 var ammo_node : ValueNode
 onready var bullet_spawner = find_node("BulletSpawner")
 
@@ -32,7 +33,6 @@ func _ready():
 	ammo_node.min_value = 0
 	ammo_node.max_value = weapon_res.magazine_size
 	ammo_node.current_value = weapon_details.current_ammo
-	print(ammo_node.max_value)
 	ammo_node.name = "AmmoNode"
 	add_child(ammo_node)
 	
@@ -51,12 +51,17 @@ func update_bullet_spawner():
 		bullet_spawner.cooldown = weapon_res.cooldown
 	
 func set_current_ammo(value):
-	print('update ammo: ', value)
 	if ammo_node:
 		ammo_node.current_value = value
 	
 	if weapon_details:
 		weapon_details.current_ammo = value
+	current_ammo = value
+		
+func set_max_ammo(value):
+	if ammo_node:
+		ammo_node.max_value = value
+	max_ammo = value
 		
 func get_current_ammo():
 	if ammo_node:
@@ -64,7 +69,13 @@ func get_current_ammo():
 		
 	if weapon_details:
 		return weapon_details.current_ammo
-	return 0
+	return current_ammo
+	
+func get_max_ammo():
+	if ammo_node:
+		return ammo_node.max_value
+
+	return max_ammo
 	
 func _AmmoNode_on_value_changed(prev_value, new_value, value_node):
 	weapon_details.current_ammo = new_value

@@ -34,6 +34,8 @@ func _unhandled_input(event):
 				var new_index = (current_index + 1) % num_weapons
 				set_weapon(inventory.get_weapon(new_index))
 
+func get_weapon():
+	return weapon_child
 	
 func set_weapon(in_weapon_details : WeaponDetails):
 	if weapon_child:

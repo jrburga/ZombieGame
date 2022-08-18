@@ -44,10 +44,9 @@ func begin_die():
 func take_damage(damage_details : DamageDetails):
 	$HealthNode.update_value(damage_details.delta_health)
 	
-	if damage_details.knock_back:
-		
+	if damage_details.knock_back:		
 		knock_back = damage_details.knock_back_direction * damage_details.knock_back_power
-		print(knock_back)
+
 		
 
 func _on_HealthNode_current_value_changed(prev_value, current_value, value_node):

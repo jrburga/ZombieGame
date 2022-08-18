@@ -7,10 +7,17 @@ export(float) var light_scale = 0.5
 
 export(float) var speed = 10
 func _ready():
+	PlayerMgr.register_player(self)
 	var state_machine = $AnimationTree.get("parameters/playback")
 #	state_machine.travel("idle_walk")
 	
 var current_door = null
+
+func get_health_node() -> ValueNode:
+	return find_node("HealthNode") as ValueNode
+
+func get_weapon_node() -> WeaponNode:
+	return find_node("WeaponNode") as WeaponNode
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var velocity : Vector2
@@ -52,13 +59,13 @@ func _process(delta):
 #	$AnimationTree.set("parameters/idle_walk/blend_position", blend_pos)
 
 func _on_InteractionArea_area_entered(area):
-	var door = area.get_parent()
+	var door = area.owner
 	if door:
 		current_door = door
 
 
 func _on_InteractionArea_area_exited(area):
-	var door = area.get_parent()
+	var door = area.owner
 	if door and current_door == door:
 		current_door = null
 		
