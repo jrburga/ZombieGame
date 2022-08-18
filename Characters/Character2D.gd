@@ -61,3 +61,5 @@ func _on_InteractionArea_area_exited(area):
 	var door = area.get_parent()
 	if door and current_door == door:
 		current_door = null
+		
+
