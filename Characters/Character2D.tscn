@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Weapons/Resources/WR_Pistol.tres" type="Resource" id=1]
 [ext_resource path="res://Characters/Character2D.gd" type="Script" id=2]
@@ -40,20 +40,77 @@ viewport_path = NodePath("Viewport")
 [sub_resource type="AnimationNodeAnimation" id=20]
 animation = "idle"
 
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "die"
+
 [sub_resource type="AnimationNodeAnimation" id=21]
 animation = "i_frames"
 
 [sub_resource type="AnimationNodeOneShot" id=22]
 
+[sub_resource type="AnimationNodeTransition" id=25]
+input_count = 2
+input_0/name = "alive"
+input_0/auto_advance = false
+input_1/name = "dead"
+input_1/auto_advance = false
+
 [sub_resource type="AnimationNodeBlendTree" id=23]
-graph_offset = Vector2( -480.698, 0 )
+graph_offset = Vector2( -748.583, 115.142 )
 nodes/Animation/node = SubResource( 21 )
-nodes/Animation/position = Vector2( -360, 280 )
+nodes/Animation/position = Vector2( -520, 320 )
 "nodes/Animation 2/node" = SubResource( 20 )
-"nodes/Animation 2/position" = Vector2( -360, 100 )
+"nodes/Animation 2/position" = Vector2( -520, 140 )
+"nodes/Animation 3/node" = SubResource( 26 )
+"nodes/Animation 3/position" = Vector2( -140, 340 )
 nodes/i_frames/node = SubResource( 22 )
-nodes/i_frames/position = Vector2( 0, 140 )
-node_connections = [ "output", 0, "i_frames", "i_frames", 0, "Animation 2", "i_frames", 1, "Animation" ]
+nodes/i_frames/position = Vector2( -160, 120 )
+nodes/output/position = Vector2( 460, 180 )
+nodes/state/node = SubResource( 25 )
+nodes/state/position = Vector2( 160, 200 )
+node_connections = [ "state", 0, "i_frames", "state", 1, "Animation 3", "output", 0, "state", "i_frames", 0, "Animation 2", "i_frames", 1, "Animation" ]
+
+[sub_resource type="Animation" id=24]
+resource_name = "die"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("HurtArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteRoot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
 
 [sub_resource type="Animation" id=19]
 resource_name = "i_frames"
@@ -121,10 +178,6 @@ texture = SubResource( 17 )
 [node name="SpriteRoot" type="Node2D" parent="."]
 position = Vector2( 0, -7 )
 
-[node name="WeaponNode" type="Node2D" parent="SpriteRoot"]
-script = ExtResource( 5 )
-BulletScene = ExtResource( 6 )
-
 [node name="SpriteHead" type="Sprite" parent="SpriteRoot"]
 position = Vector2( 0, -5 )
 texture = SubResource( 14 )
@@ -132,6 +185,10 @@ texture = SubResource( 14 )
 [node name="SpriteBody" type="Sprite" parent="SpriteRoot"]
 position = Vector2( 0, 2 )
 texture = SubResource( 12 )
+
+[node name="WeaponNode" type="Node2D" parent="SpriteRoot"]
+script = ExtResource( 5 )
+BulletScene = ExtResource( 6 )
 
 [node name="Viewport" parent="." instance=ExtResource( 3 )]
 
@@ -145,8 +202,10 @@ tree_root = SubResource( 23 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/i_frames/active = false
+parameters/state/current = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/die = SubResource( 24 )
 anims/i_frames = SubResource( 19 )
 anims/idle = SubResource( 3 )
 
@@ -158,5 +217,4 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea2D"]
 position = Vector2( 0, -7 )
 shape = SubResource( 18 )
-
-[connection signal="current_value_changed" from="HealthNode" to="." method="_on_HealthNode_current_value_changed"]
+disabled = true

@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Zombie2D
 
 enum {
 	IDLE,
@@ -9,12 +10,10 @@ enum {
 
 var state = IDLE
 export(float) var speed : float = 10
-var character = null
+
 var dying = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	find_node('HitArea2D').find_node('CollisionShape2D').disabled = true
-	character = get_node('/root').find_node('Character2D', true, false)
 	pass # Replace with function body.
 
 
@@ -24,6 +23,8 @@ func _ready():
 
 var knock_back = Vector2()
 func _physics_process(delta):
+	
+	var character = PlayerMgr.get_player(self)
 	if dying:
 		return
 		
@@ -39,9 +40,7 @@ func _physics_process(delta):
 		
 		return
 		
-		
-
-	if character:
+	if is_instance_valid(character):
 		var distance = character.global_position - global_position
 		if state == ATTACKING:
 			$HandsRoot.rotation = distance.angle()

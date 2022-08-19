@@ -24,6 +24,8 @@ func _ready():
 			set_weapon(weapon)
 	
 func _unhandled_input(event):
+	if owner.is_dead():
+		return
 	if event is InputEvent:
 		if event.is_pressed() and event.is_action("cheat_swap_weapon"):
 			var inventory = owner.find_node("InventoryNode") as InventoryNode
@@ -33,6 +35,14 @@ func _unhandled_input(event):
 				
 				var new_index = (current_index + 1) % num_weapons
 				set_weapon(inventory.get_weapon(new_index))
+				
+	if weapon_child and event is InputEvent:
+		if event.is_action_pressed("attack_primary"):
+			weapon_child.trigger_primary_pressed()
+		if event.is_action_released("attack_primary"):
+			weapon_child.trigger_primary_released()
+		if event.is_action_pressed("weapon_reload"):
+			weapon_child.reload_pressed()
 
 func get_weapon():
 	return weapon_child

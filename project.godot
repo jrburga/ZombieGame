@@ -93,6 +93,11 @@ _global_script_classes=[ {
 "class": "WeaponResource",
 "language": "GDScript",
 "path": "res://Weapons/WeaponResource.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Zombie2D",
+"language": "GDScript",
+"path": "res://Characters/Zombie2D.gd"
 } ]
 _global_script_class_icons={
 "AespritePlayer": "",
@@ -111,7 +116,8 @@ _global_script_class_icons={
 "WeaponBase": "",
 "WeaponDetails": "",
 "WeaponNode": "",
-"WeaponResource": ""
+"WeaponResource": "",
+"Zombie2D": ""
 }
 
 [application]
