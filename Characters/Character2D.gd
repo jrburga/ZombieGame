@@ -2,15 +2,28 @@ tool
 extends KinematicBody2D
 class_name Character2D
 
+enum {
+	ALIVE,
+	DEAD
+}
+
 export(bool) var local_player = true
 export(float) var light_scale = 0.5
 
 onready var weapon_node = find_node("WeaponNode")
 
+var state = ALIVE
+
+func is_dead():
+	return state == DEAD
+
 export(float) var speed = 10
 func _ready():
+	state = ALIVE
 	PlayerMgr.register_player(self)
-	var state_machine = $AnimationTree.get("parameters/playback")
+	$AnimationTree.set('parameters/state/current', ALIVE)
+	$HurtArea2D/CollisionShape2D.disabled = false
+	$SpriteRoot.modulate.a = 1
 
 #	state_machine.travel("idle_walk")
 	
@@ -27,6 +40,8 @@ func take_damage(damage_details: DamageDetails):
 		knock_back = damage_details.knock_back_direction * damage_details.knock_back_power
 	get_health_node().update_value(damage_details.delta_health)
 	$AnimationTree.set('parameters/i_frames/active', true)
+	if get_health_node().current_value <= 0:
+		begin_die()
 	
 	
 
@@ -35,6 +50,9 @@ var velocity : Vector2
 var knock_back : Vector2
 func _process(delta):
 	if Engine.editor_hint:
+		return
+		
+	if state == DEAD:
 		return
 		
 	weapon_node.look_at(weapon_node.get_global_mouse_position())
@@ -56,8 +74,6 @@ func _process(delta):
 		
 	velocity = Vector2.ZERO
 
-
-		
 	if Input.is_action_pressed("up"):
 		velocity += Vector2.UP
 	if Input.is_action_pressed("down"):
@@ -87,4 +103,8 @@ func _on_InteractionArea_area_exited(area):
 	if door and current_door == door:
 		current_door = null
 		
+		
+func begin_die():
+	state = DEAD
+	$AnimationTree.set('parameters/state/current', DEAD)
 

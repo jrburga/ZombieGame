@@ -81,16 +81,6 @@ func get_max_ammo():
 func _AmmoNode_on_value_changed(prev_value, new_value, value_node):
 	weapon_details.current_ammo = new_value
 
-func _unhandled_input(event):
-	if event is InputEvent:
-		if event.is_action_pressed("attack_primary"):
-			trigger_primary_pressed()
-		if event.is_action_released("attack_primary"):
-			trigger_primary_released()
-		if event.is_action_pressed("weapon_reload"):
-			reload_pressed()
-	
-
 func trigger_primary_pressed():
 	trigger_pressed = true
 	if state != IDLE:
