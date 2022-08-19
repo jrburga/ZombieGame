@@ -18,6 +18,10 @@ func _input(event : InputEvent):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var weapon_node = owner.find_node('WeaponNode') as WeaponNode
+	var weapon_res = weapon_node.weapon_details.weapon_resource as WeaponResource
+	max_distance = weapon_res.weapon_range
+	
 	var direction = get_global_mouse_position() - owner.global_position
 	var distance = min(max_distance, direction.length())
 	direction = direction.normalized() * distance

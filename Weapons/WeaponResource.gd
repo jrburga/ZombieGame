@@ -8,6 +8,7 @@ export(PackedScene) var WeaponScene : PackedScene
 
 export(bool) var automatic = false
 export(int) var magazine_size : int = 10
+export(float) var weapon_range : float = 100
 
 export(float) var bullet_lifetime : float = 10.0
 export(float) var bullet_spread : float = 0.0

@@ -10,6 +10,7 @@ display_name = "AR"
 WeaponScene = ExtResource( 2 )
 automatic = true
 magazine_size = 25
+weapon_range = 50.0
 bullet_lifetime = 0.2
 bullet_spread = 5.0
 bullet_speed = 5.0

@@ -10,6 +10,7 @@ display_name = "RPG"
 WeaponScene = ExtResource( 2 )
 automatic = false
 magazine_size = 10
+weapon_range = 50.0
 bullet_lifetime = 0.25
 bullet_spread = 0.0
 bullet_speed = 5.0

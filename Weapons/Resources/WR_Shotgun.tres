@@ -10,6 +10,7 @@ display_name = "Shotgun"
 WeaponScene = ExtResource( 2 )
 automatic = false
 magazine_size = 10
+weapon_range = 25.0
 bullet_lifetime = 0.25
 bullet_spread = 20.0
 bullet_speed = 5.0
