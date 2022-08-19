@@ -34,6 +34,7 @@ func spawn_bullets(target_position : Vector2):
 		
 		direction = direction.rotated(angle_rad)
 		
+		bullet.target_position = target_position
 		bullet.velocity = direction * bullet_speed
 		
 		

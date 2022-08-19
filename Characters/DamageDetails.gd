@@ -8,6 +8,8 @@ func _init(weapon_resource : WeaponResource):
 	stun = weapon_resource.stun
 	stun_time = weapon_resource.stun_time
 	
+var hurt_area : Area2D = null
+
 var delta_health = 0
 
 var knock_back : bool = false

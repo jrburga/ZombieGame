@@ -42,7 +42,10 @@ func begin_die():
 	queue_free()
 	
 func take_damage(damage_details : DamageDetails):
-	$HealthNode.update_value(damage_details.delta_health)
+	var damage_multiplier = 1
+	if $HurtAreaHead2D == damage_details.hurt_area:
+		damage_multiplier = 5
+	$HealthNode.update_value(damage_details.delta_health * damage_multiplier)
 	
 	if damage_details.knock_back:		
 		knock_back = damage_details.knock_back_direction * damage_details.knock_back_power
