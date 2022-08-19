@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Weapons/Resources/WR_Pistol.tres" type="Resource" id=1]
 [ext_resource path="res://Characters/Character2D.gd" type="Script" id=2]
@@ -18,37 +18,76 @@ script = ExtResource( 8 )
 current_ammo = 10
 weapon_resource = ExtResource( 1 )
 
+[sub_resource type="CircleShape2D" id=15]
+radius = 2.01686
+
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 11 )
 region = Rect2( 3, 3, 5, 5 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 4 )
-region = Rect2( 8, 5, 6, 10 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 4 )
 region = Rect2( 9, 0, 4, 6 )
 
-[sub_resource type="CircleShape2D" id=15]
-radius = 2.01686
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 8, 5, 6, 10 )
 
 [sub_resource type="ViewportTexture" id=8]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=20]
 animation = "idle"
 
-[sub_resource type="AnimationNodeStateMachine" id=4]
-states/idle/node = SubResource( 6 )
-states/idle/position = Vector2( 323, 100 )
-start_node = "idle"
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "i_frames"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+[sub_resource type="AnimationNodeOneShot" id=22]
+
+[sub_resource type="AnimationNodeBlendTree" id=23]
+graph_offset = Vector2( -480.698, 0 )
+nodes/Animation/node = SubResource( 21 )
+nodes/Animation/position = Vector2( -360, 280 )
+"nodes/Animation 2/node" = SubResource( 20 )
+"nodes/Animation 2/position" = Vector2( -360, 100 )
+nodes/i_frames/node = SubResource( 22 )
+nodes/i_frames/position = Vector2( 0, 140 )
+node_connections = [ "output", 0, "i_frames", "i_frames", 0, "Animation 2", "i_frames", 1, "Animation" ]
+
+[sub_resource type="Animation" id=19]
+resource_name = "i_frames"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteRoot:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.4, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.8 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0.8 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HurtArea2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "idle"
 loop = true
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 2, 4 )
 
 [node name="Character2D" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -60,6 +99,13 @@ weapons = [ SubResource( 16 ) ]
 
 [node name="HealthNode" type="Node" parent="."]
 script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 0, -1 )
+scale = Vector2( 0.991641, 0.983804 )
+shape = SubResource( 15 )
 
 [node name="Crosshair" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
@@ -73,25 +119,17 @@ texture = SubResource( 17 )
 [node name="SpriteRoot" type="Node2D" parent="."]
 position = Vector2( 0, -7 )
 
-[node name="SpriteBody" type="Sprite" parent="SpriteRoot"]
-position = Vector2( 0, 2 )
-texture = SubResource( 12 )
-
-[node name="SpriteHead" type="Sprite" parent="."]
-position = Vector2( 0, -12 )
-texture = SubResource( 14 )
-
-[node name="WeaponNode" type="Node2D" parent="."]
-position = Vector2( 0, -7 )
+[node name="WeaponNode" type="Node2D" parent="SpriteRoot"]
 script = ExtResource( 5 )
 BulletScene = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-show_behind_parent = true
-light_mask = 0
-position = Vector2( 0, -1 )
-scale = Vector2( 0.991641, 0.983804 )
-shape = SubResource( 15 )
+[node name="SpriteHead" type="Sprite" parent="SpriteRoot"]
+position = Vector2( 0, -5 )
+texture = SubResource( 14 )
+
+[node name="SpriteBody" type="Sprite" parent="SpriteRoot"]
+position = Vector2( 0, 2 )
+texture = SubResource( 12 )
 
 [node name="Viewport" parent="." instance=ExtResource( 3 )]
 
@@ -101,12 +139,22 @@ texture = SubResource( 8 )
 texture_scale = 0.5
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 4 )
+tree_root = SubResource( 23 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 5 )
+parameters/i_frames/active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/i_frames = SubResource( 19 )
 anims/idle = SubResource( 3 )
+
+[node name="HurtArea2D" type="Area2D" parent="."]
+light_mask = 0
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea2D"]
+position = Vector2( 0, -7 )
+shape = SubResource( 18 )
 
 [connection signal="current_value_changed" from="HealthNode" to="." method="_on_HealthNode_current_value_changed"]

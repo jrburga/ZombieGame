@@ -5,6 +5,8 @@ class_name Character2D
 export(bool) var local_player = true
 export(float) var light_scale = 0.5
 
+onready var weapon_node = find_node("WeaponNode")
+
 export(float) var speed = 10
 func _ready():
 	PlayerMgr.register_player(self)
@@ -19,45 +21,60 @@ func get_health_node() -> ValueNode:
 
 func get_weapon_node() -> WeaponNode:
 	return find_node("WeaponNode") as WeaponNode
+	
+func take_damage(damage_details: DamageDetails):
+	if damage_details.knock_back:
+		knock_back = damage_details.knock_back_direction * damage_details.knock_back_power
+	get_health_node().update_value(damage_details.delta_health)
+	$AnimationTree.set('parameters/i_frames/active', true)
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var velocity : Vector2
+var knock_back : Vector2
 func _process(delta):
 	if Engine.editor_hint:
 		return
 		
-	$WeaponNode.look_at($WeaponNode.get_global_mouse_position())
+	weapon_node.look_at(weapon_node.get_global_mouse_position())
 	
-	$WeaponNode.rotation_degrees = fmod($WeaponNode.rotation_degrees, 360)
+	weapon_node.rotation_degrees = fmod(weapon_node.rotation_degrees, 360)
 	
-	var mouse_delta =  $WeaponNode.get_global_mouse_position() - $WeaponNode.global_position
+	var mouse_delta =  weapon_node.get_global_mouse_position() - weapon_node.global_position
 	if mouse_delta.x >= 0:
-		$WeaponNode.scale.y = 1
-		$SpriteHead.flip_h = false
+		weapon_node.scale.y = 1
+		$SpriteRoot/SpriteHead.flip_h = false
 	else:
-		$WeaponNode.scale.y = -1
-		$SpriteHead.flip_h = true
+		weapon_node.scale.y = -1
+		$SpriteRoot/SpriteHead.flip_h = true
 	if Input.is_action_just_pressed("interact"):
 		if current_door:
 			current_door.toggle_state()
+			
+
 		
 	velocity = Vector2.ZERO
+
+
+		
 	if Input.is_action_pressed("up"):
 		velocity += Vector2.UP
 	if Input.is_action_pressed("down"):
 		velocity += Vector2.DOWN
 	if Input.is_action_pressed("left"):
 		velocity += Vector2.LEFT
-		$SpriteRoot.scale.x = -1
+		$SpriteRoot/SpriteBody.scale.x = -1
 	if Input.is_action_pressed("right"):
 		velocity += Vector2.RIGHT
-		$SpriteRoot.scale.x = 1
+		$SpriteRoot/SpriteBody.scale.x = 1
 	
 	velocity = velocity.normalized() * speed
-	move_and_slide(velocity)
 	
-	var blend_pos = velocity.normalized().length_squared()
-#	$AnimationTree.set("parameters/idle_walk/blend_position", blend_pos)
+	if knock_back.length_squared() > 0:
+		velocity += knock_back
+		knock_back *= .1
+	move_and_slide(velocity)
 
 func _on_InteractionArea_area_entered(area):
 	var door = area.owner

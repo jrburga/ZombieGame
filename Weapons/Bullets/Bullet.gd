@@ -13,9 +13,9 @@ var destroyed = false
 func _ready():
 	$RayCast2D.enabled = false
 	$Timer.start(lifetime)
-	var offset = velocity.normalized() * 2
-	$RayCast2D.position = -offset 
-	$RayCast2D.cast_to = offset
+	var offset = velocity.normalized() * 5
+	$RayCast2D.position = Vector2(-2, 0)
+	$RayCast2D.cast_to = Vector2(0, 0)
 
 func _physics_process(delta):
 	if destroyed:

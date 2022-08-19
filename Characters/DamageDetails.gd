@@ -1,7 +1,11 @@
 extends Reference
 class_name DamageDetails
 
-func _init(weapon_resource : WeaponResource):
+func _init(weapon_resource : WeaponResource = null):
+	
+	if weapon_resource == null:
+		return
+		
 	delta_health = -weapon_resource.damage_per_bullet
 	knock_back = weapon_resource.knock_back
 	knock_back_power = weapon_resource.knock_back_power
