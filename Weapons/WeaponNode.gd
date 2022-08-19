@@ -52,6 +52,7 @@ func set_weapon(in_weapon_details : WeaponDetails):
 		
 	if weapon_child:
 		weapon_child.weapon_details = weapon_details
+		weapon_child.crosshair = owner.find_node('Crosshair')
 		add_child(weapon_child)
 			
 func remove_weapon():

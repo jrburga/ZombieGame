@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Character2D.gd"
 }, {
+"base": "Sprite",
+"class": "Crosshair",
+"language": "GDScript",
+"path": "res://Characters/Crosshair.gd"
+}, {
 "base": "Reference",
 "class": "DamageDetails",
 "language": "GDScript",
@@ -96,6 +101,7 @@ _global_script_class_icons={
 "BulletSpawner": "",
 "CameraFollow2D": "",
 "Character2D": "",
+"Crosshair": "",
 "DamageDetails": "",
 "HealthBar": "",
 "InventoryNode": "",

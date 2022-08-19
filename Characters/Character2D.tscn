@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Weapons/Resources/WR_Pistol.tres" type="Resource" id=1]
 [ext_resource path="res://Characters/Character2D.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Characters/ValueNode.gd" type="Script" id=9]
 [ext_resource path="res://Characters/Crosshair.gd" type="Script" id=10]
 [ext_resource path="res://Textures/crosshair.png" type="Texture" id=11]
+[ext_resource path="res://Textures/AT_Mouse.tres" type="Texture" id=12]
 
 [sub_resource type="Resource" id=16]
 resource_local_to_scene = true
@@ -111,6 +112,7 @@ shape = SubResource( 15 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 11 )
 script = ExtResource( 10 )
+mouse_texture = ExtResource( 12 )
 
 [node name="Secondary" type="Sprite" parent="Crosshair"]
 scale = Vector2( 0.5, 0.5 )

@@ -18,6 +18,7 @@ var ammo_node : ValueNode
 onready var bullet_spawner = find_node("BulletSpawner")
 
 var weapon_details : WeaponDetails
+var crosshair : Node2D = null
 
 func get_weapon_resource() -> WeaponResource:
 	return weapon_details.weapon_resource as WeaponResource if weapon_details else null
@@ -102,7 +103,8 @@ func trigger_primary_pressed():
 	while trigger_pressed:
 		state = FIRING
 		if bullet_spawner:
-			bullet_spawner.spawn_bullets(get_global_mouse_position())
+			var target = crosshair.global_position if crosshair else get_global_mouse_position()
+			bullet_spawner.spawn_bullets(target)
 			
 			set_current_ammo(get_current_ammo() - 1)
 		if one_shot:
