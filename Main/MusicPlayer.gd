@@ -40,6 +40,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	return 
+	if Engine.editor_hint:
+		return
 	
 	var bps = 120 / 60
 	var loop_seconds = markers['section_1_loop'] +  4 / bps

@@ -43,11 +43,12 @@ func _ready():
 	
 func update_bullet_spawner():
 	var weapon_res = get_weapon_resource()
-	var bullet_spawner = find_node("BulletSpawner") as BulletSpawner
+	var bullet_spawner = find_node("BulletSpawner")
 	if bullet_spawner:
 		bullet_spawner.bullet_speed = weapon_res.bullet_speed
 		bullet_spawner.bullet_lifetime = weapon_res.bullet_lifetime
 		bullet_spawner.bullets_spawned = weapon_res.bullets_spawned
+		bullet_spawner.bullet_range = weapon_res.weapon_range
 		bullet_spawner.spread = weapon_res.bullet_spread
 		bullet_spawner.cooldown = weapon_res.cooldown
 	
@@ -92,7 +93,7 @@ func trigger_primary_pressed():
 	update_bullet_spawner()
 	while trigger_pressed:
 		state = FIRING
-		if bullet_spawner:
+		if bullet_spawner and bullet_spawner.can_spawn_bullets():
 			var target = crosshair.global_position if crosshair else get_global_mouse_position()
 			bullet_spawner.spawn_bullets(target)
 			

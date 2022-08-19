@@ -3,6 +3,7 @@ class_name BulletSpawner
 
 export(PackedScene) var BulletScene : PackedScene
 export(float) var bullet_speed = 300
+export(float) var bullet_range = 100
 export(float) var bullet_lifetime = 0.25
 export(int) var bullets_spawned = 1
 export(float) var seconds_per_bullet = 0
@@ -14,6 +15,9 @@ func _ready():
 	return 
 	
 var firing = false
+func can_spawn_bullets():
+	return (not firing) and ($TimerCooldown.time_left <= 0)
+	
 func spawn_bullets(target_position : Vector2):
 	if firing:
 		return
@@ -24,6 +28,7 @@ func spawn_bullets(target_position : Vector2):
 	for index in bullets_spawned:
 		var bullet = BulletScene.instance() as Bullet
 		bullet.lifetime = bullet_lifetime
+		bullet.target_position = target_position
 		bullet.global_position = global_position
 		
 		var delta = target_position - owner.global_position
