@@ -9,6 +9,7 @@ export(float) var speed = 10
 func _ready():
 	PlayerMgr.register_player(self)
 	var state_machine = $AnimationTree.get("parameters/playback")
+
 #	state_machine.travel("idle_walk")
 	
 var current_door = null

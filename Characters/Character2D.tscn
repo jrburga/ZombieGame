@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Weapons/Resources/WR_Pistol.tres" type="Resource" id=1]
 [ext_resource path="res://Characters/Character2D.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Characters/InventoryNode.gd" type="Script" id=7]
 [ext_resource path="res://Weapons/WeaponDetails.gd" type="Script" id=8]
 [ext_resource path="res://Characters/ValueNode.gd" type="Script" id=9]
+[ext_resource path="res://Characters/Crosshair.gd" type="Script" id=10]
+[ext_resource path="res://Textures/crosshair.png" type="Texture" id=11]
 
 [sub_resource type="Resource" id=16]
 resource_local_to_scene = true
@@ -54,6 +56,11 @@ weapons = [ SubResource( 16 ) ]
 
 [node name="HealthNode" type="Node" parent="."]
 script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+script = ExtResource( 10 )
 
 [node name="SpriteRoot" type="Node2D" parent="."]
 position = Vector2( 0, -7 )
