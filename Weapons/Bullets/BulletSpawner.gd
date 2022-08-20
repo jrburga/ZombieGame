@@ -28,6 +28,7 @@ func spawn_bullets(target_position : Vector2):
 	for index in bullets_spawned:
 		var bullet = BulletScene.instance() as Bullet
 		bullet.lifetime = bullet_lifetime
+		bullet.bullet_range = bullet_range
 		bullet.target_position = target_position
 		bullet.global_position = global_position
 		
@@ -38,6 +39,7 @@ func spawn_bullets(target_position : Vector2):
 		var angle_rad = deg2rad(angle_deg)
 		
 		direction = direction.rotated(angle_rad)
+		
 		
 		bullet.target_position = target_position
 		bullet.velocity = direction * bullet_speed

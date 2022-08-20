@@ -22,9 +22,13 @@ func _process(delta):
 	var weapon_res = weapon_node.weapon_details.weapon_resource as WeaponResource
 	max_distance = weapon_res.weapon_range
 	
-	var direction = get_global_mouse_position() - owner.global_position
+	var root_position = owner.global_position
+	if weapon_node.weapon_child:
+		var bullet_spawner = weapon_node.weapon_child.find_node('BulletSpawner')
+		root_position = bullet_spawner.global_position if bullet_spawner else root_position
+	var direction = get_global_mouse_position() - root_position
 	var distance = min(max_distance, direction.length())
 	direction = direction.normalized() * distance
-	global_position = owner.global_position + direction
+	global_position = root_position + direction
 	
 	$Secondary.global_position = get_global_mouse_position()
