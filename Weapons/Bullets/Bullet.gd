@@ -15,7 +15,7 @@ var speed = 0
 func _ready():
 	var start_position = global_position
 	
-	bullet_range = (target_position - start_position).length()
+#	bullet_range = (target_position - start_position).length()
 	$RayCast2D.enabled = true
 #	$Timer.start(lifetime)
 	speed = velocity.length()
@@ -34,14 +34,8 @@ func _physics_process(delta):
 	var new_pos = global_position
 	
 	distance_traveled += (new_pos - prev_pos).length()
-	if distance_traveled <= 20:
-		$RayCast2D.enabled = true
-	elif distance_traveled >= bullet_range - 5 and distance_traveled <= bullet_range + 10:
-		$RayCast2D.enabled = true
-	else:
-		$RayCast2D.enabled = false
 	
-	if distance_traveled > bullet_range + 10:
+	if distance_traveled > bullet_range:
 		begin_destroy()
 		return
 	
