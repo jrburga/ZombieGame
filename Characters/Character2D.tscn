@@ -148,6 +148,8 @@ loop = true
 extents = Vector2( 2, 4 )
 
 [node name="Character2D" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 137
 script = ExtResource( 2 )
 speed = 25.0
 
@@ -161,7 +163,6 @@ script = ExtResource( 9 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 show_behind_parent = true
 light_mask = 0
-position = Vector2( 0, -1 )
 scale = Vector2( 0.991641, 0.983804 )
 shape = SubResource( 15 )
 

@@ -21,7 +21,7 @@ export(float) var speed = 10
 func _ready():
 	if Engine.editor_hint:
 		return
-		
+
 	state = ALIVE
 	PlayerMgr.register_player(self)
 	$AnimationTree.set('parameters/state/current', ALIVE)

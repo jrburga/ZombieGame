@@ -17,11 +17,6 @@ func _ready():
 	
 #	bullet_range = (target_position - start_position).length()
 	$RayCast2D.enabled = true
-#	$Timer.start(lifetime)
-	speed = velocity.length()
-	var offset = velocity.normalized() * 5
-	$RayCast2D.position = Vector2(-2, 0)
-	$RayCast2D.cast_to = Vector2(0, 0)
 	
 
 var distance_traveled = 0
@@ -40,9 +35,13 @@ func _physics_process(delta):
 		return
 	
 	if $RayCast2D.is_colliding():
+		print('colling with something')
 		global_position = $RayCast2D.get_collision_point()
 		var hurt_area = $RayCast2D.get_collider() as Area2D
-		hit_hurt_area(hurt_area)
+		if hurt_area:
+			hit_hurt_area(hurt_area)
+		else:
+			begin_destroy()
 		
 func begin_destroy():
 	destroyed = true
