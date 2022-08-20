@@ -9,6 +9,9 @@ export(PackedScene) var BulletScene
 var weapon_child = null
 
 func _ready():
+	if Engine.editor_hint:
+		return
+		
 	var inventory = owner.find_node("InventoryNode") as InventoryNode
 	if inventory:
 		var wdb = WeaponsDB.get_weapons_db(self) as WeaponsDB
