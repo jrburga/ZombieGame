@@ -60,6 +60,9 @@ func _process(delta):
 		if $DayTimer.wait_time > 0:
 			
 			day_percent = (-cos(2 * PI * $DayTimer.time_left / $DayTimer.wait_time) + 1)/2
+			
+		
+		blood_moon_percent = day_num == 12
 	
 	var adj_night_color = night_color.linear_interpolate(blood_moon_color, blood_moon_percent)
 	var adj_day_color = adj_night_color.linear_interpolate(day_color, day_percent)

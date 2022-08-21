@@ -15,11 +15,11 @@ func set_day_num(day_num):
 		$MoonSprite.frame = 1
 	if day_num in [5, 6, 7]:
 		$MoonSprite.frame = 2
-	if day_num in [8, 9, 10]:
+	if day_num in [8, 9]:
 		$MoonSprite.frame = 3
-	if day_num in [11, 12]:
+	if day_num in [10, 11]:
 		$MoonSprite.frame = 4
-	if day_num >= 13:
+	if day_num >= 12:
 		$MoonSprite.frame = 5
 	
 func get_day_num() -> int:
