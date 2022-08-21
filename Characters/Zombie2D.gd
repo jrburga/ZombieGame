@@ -9,22 +9,61 @@ enum {
 	STUNNED
 }
 
+
+var zombie_navigation : Navigation2D = null
+var path = null
+var player_found = false
 var state = IDLE
 export(float) var speed : float = 10
 
 var dying = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	zombie_navigation = find_navigation()
 
+func navigate():
+	var velocity = Vector2()
+	if path.size() > 1:
+		velocity = global_position.direction_to(path[1]) * speed
+		
+		var dist_to_path : Vector2 = (path[0] - global_position)
+		if dist_to_path.is_equal_approx(Vector2(0, 0)):
+			path.remove(0)
+	return velocity
+		
+
+func generate_path(player_position):
+	if zombie_navigation:
+		path = zombie_navigation.get_simple_path(global_position, player_position, false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
+
+
+func find_navigation():
+	for navigation_node in get_tree().get_nodes_in_group('navigation'):
+		return navigation_node
+	return null
+
+func find_closest_window():
+	var closest_dist = INF
+	var closest_window = null
+	for window in get_tree().get_nodes_in_group('windows'):
+		var dist = (window.global_position - global_position).length()
+		if dist < closest_dist:
+			closest_window = window
+			closest_dist = dist
+	return closest_window
+
 var knock_back = Vector2()
+
+var regenerate_seconds = 0
+var regenerate_wait_time = 2
 func _physics_process(delta):
 	
+	regenerate_seconds = min(0, regenerate_seconds - delta)
 	var character = PlayerMgr.get_player(self)
 	if dying:
 		return
@@ -59,9 +98,16 @@ func _physics_process(delta):
 			if state != ATTACKING:
 				attack()
 				return
-		
-		var direction = distance.normalized()
-		var velocity = direction * speed
+				
+		var velocity = Vector2()
+		if zombie_navigation:
+			if regenerate_seconds <= 0:
+				generate_path(character.global_position)
+				regenerate_seconds = regenerate_wait_time
+			velocity = navigate()
+		else:
+			var direction = distance.normalized()
+			velocity = direction * speed
 		if velocity.x < 0:
 			$SpriteRoot.scale.x = -1
 		else:

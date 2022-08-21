@@ -16,8 +16,10 @@ func _set_enabled(value):
 		start_spawner()
 	
 func start_spawner():
-	yield(get_tree().create_timer(delay), "timeout")
+	if delay > 0:
+		yield(get_tree().create_timer(delay), "timeout")
 	if enabled:
+		spawn_zombie()
 		spawn_timer.start(cooldown)
 	
 func stop_spawner():
