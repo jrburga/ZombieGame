@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Textures/Weapons/AR-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Weapons/WeaponBase.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Weapons/MagazineDrop/MagazineDropper.gd" type="Script" id=5]
 [ext_resource path="res://Weapons/MagazineDrop/MagazineDrop.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Animation/AsepritePlayer.gd" type="Script" id=7]
+[ext_resource path="res://Audio/SFX/mixkit-handgun-click-1660.mp3" type="AudioStream" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -56,3 +57,6 @@ MagazineDropScene = ExtResource( 6 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/reload = SubResource( 2 )
 script = ExtResource( 7 )
+
+[node name="SFX_Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )

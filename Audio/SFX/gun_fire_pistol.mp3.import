@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/gun_fire_pistol.mp3-4fee788474eb14d153dd74865638f030.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/gun_fire_pistol.mp3"
+dest_files=[ "res://.import/gun_fire_pistol.mp3-4fee788474eb14d153dd74865638f030.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

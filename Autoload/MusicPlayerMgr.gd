@@ -1,6 +1,6 @@
 extends Node
 
-var music_player : MusicPlayer = null
+var music_player : AudioStreamPlayer = null
 var fade_tween : Tween = null
 
 export(float) var volume = 1

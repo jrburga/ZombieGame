@@ -40,6 +40,7 @@ func _ready():
 	ammo_node.connect("current_value_changed", self, "_AmmoNode_on_value_changed")
 	
 	update_bullet_spawner()
+
 	
 func update_bullet_spawner():
 	var weapon_res = get_weapon_resource()
@@ -111,7 +112,10 @@ func trigger_primary_pressed():
 func reload_pressed():
 	if state != IDLE:
 		return
-
+	var sfx_player = find_node("SFX_Player")
+	if sfx_player:
+		sfx_player.play()
+		
 	state = RELOADING
 	$AnimationPlayer.play("reload")
 	yield($AnimationPlayer, "animation_finished")

@@ -50,6 +50,7 @@ func spawn_bullets(target_position : Vector2):
 		bullet.damage_details = damage_details
 		bullet.set_as_toplevel(true)
 		add_child(bullet)
+		$AudioStreamPlayer.play()
 		
 		if seconds_per_bullet > 0:
 			$TimerAutoFire.start(seconds_per_bullet)

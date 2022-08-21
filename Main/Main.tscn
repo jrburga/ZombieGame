@@ -95,31 +95,28 @@ script = ExtResource( 16 )
 position = Vector2( 14, 77 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
-cooldown = 15.0
+cooldown = 5.0
 variance = 5.0
 
 [node name="ZombieSpawner2" type="YSort" parent="YSort/Zombies"]
 position = Vector2( -71, -87 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
-delay = 2.0
-cooldown = 15.0
+cooldown = 5.0
 variance = 5.0
 
 [node name="ZombieSpawner3" type="YSort" parent="YSort/Zombies"]
 position = Vector2( -52, 78 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
-delay = 5.0
-cooldown = 15.0
+cooldown = 5.0
 variance = 5.0
 
 [node name="ZombieSpawner4" type="YSort" parent="YSort/Zombies"]
 position = Vector2( -125, 76 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
-delay = 3.0
-cooldown = 15.0
+cooldown = 5.0
 variance = 5.0
 
 [node name="Character2D" parent="YSort" instance=ExtResource( 1 )]
