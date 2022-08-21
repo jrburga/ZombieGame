@@ -53,7 +53,7 @@ color = Color( 0.00784314, 0, 0.0980392, 1 )
 [node name="DaylightNode" type="Node2D" parent="."]
 script = ExtResource( 12 )
 day_length = 10
-night_length = 90.0
+night_length = 60.0
 day_percent = 1
 blood_moon_percent = 0
 day_color = Color( 1, 1, 0.788235, 1 )
@@ -115,6 +115,20 @@ variance = 5.0
 
 [node name="ZombieSpawner4" type="YSort" parent="YSort/Zombies"]
 position = Vector2( -125, 76 )
+script = ExtResource( 3 )
+ZombieScene = ExtResource( 2 )
+cooldown = 5.0
+variance = 5.0
+
+[node name="ZombieSpawner5" type="YSort" parent="YSort/Zombies"]
+position = Vector2( -192, -11 )
+script = ExtResource( 3 )
+ZombieScene = ExtResource( 2 )
+cooldown = 5.0
+variance = 5.0
+
+[node name="ZombieSpawner6" type="YSort" parent="YSort/Zombies"]
+position = Vector2( 161, -9 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
 cooldown = 5.0
