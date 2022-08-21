@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Crosshair.gd"
 }, {
+"base": "Node2D",
+"class": "DalightNode",
+"language": "GDScript",
+"path": "res://Main/DaylightNode.gd"
+}, {
 "base": "Reference",
 "class": "DamageDetails",
 "language": "GDScript",
@@ -107,6 +112,7 @@ _global_script_class_icons={
 "CameraFollow2D": "",
 "Character2D": "",
 "Crosshair": "",
+"DalightNode": "",
 "DamageDetails": "",
 "HealthBar": "",
 "InventoryNode": "",
@@ -130,6 +136,7 @@ config/icon="res://icon.png"
 
 WeaponsDB="*res://Autoload/WeaponsDB.gd"
 PlayerMgr="*res://Autoload/PlayerMgr.gd"
+DaylightMgr="*res://Autoload/DaylightMgr.gd"
 
 [display]
 
@@ -189,6 +196,9 @@ weapon_reload={
 
 [layer_names]
 
+2d_render/layer_1="Environment"
+2d_render/layer_2="Player"
+2d_render/layer_3="Zombie"
 2d_physics/layer_1="Environment"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
