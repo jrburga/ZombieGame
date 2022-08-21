@@ -7,6 +7,7 @@ enum TOD {
 	NIGHT
 }
 
+export(int, 0, 12) var day_num = 0
 export(TOD) var time_of_day = TOD.NIGHT
 export(float) var day_length = 10
 export(float) var night_length = 10
@@ -16,7 +17,7 @@ export(Color) var day_color = Color.white
 export(Color) var night_color = Color.white
 export(Color) var blood_moon_color = Color.white
 
-var day_num = 0
+
 
 signal night_started
 signal day_started
@@ -62,7 +63,7 @@ func _process(delta):
 			day_percent = (-cos(2 * PI * $DayTimer.time_left / $DayTimer.wait_time) + 1)/2
 			
 		
-		blood_moon_percent = day_num == 12
+		blood_moon_percent = day_num >= 12
 	
 	var adj_night_color = night_color.linear_interpolate(blood_moon_color, blood_moon_percent)
 	var adj_day_color = adj_night_color.linear_interpolate(day_color, day_percent)

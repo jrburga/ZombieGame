@@ -35,7 +35,6 @@ func _physics_process(delta):
 		return
 	
 	if $RayCast2D.is_colliding():
-		print('colling with something')
 		global_position = $RayCast2D.get_collision_point()
 		var hurt_area = $RayCast2D.get_collider() as Area2D
 		if hurt_area:

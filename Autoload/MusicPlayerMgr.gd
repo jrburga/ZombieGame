@@ -21,13 +21,11 @@ var songs = [
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	music_player = AudioStreamPlayer.new()
 	fade_tween = Tween.new()
 	add_child(music_player)
 	add_child(fade_tween)
-	
-	print(zombie_music)
 	
 	music_player.stream = zombie_music
 	music_player.play()

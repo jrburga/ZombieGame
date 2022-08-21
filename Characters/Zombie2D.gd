@@ -21,9 +21,12 @@ var dying = false
 func _ready():
 	var daylight_node = DaylightMgr.get_daylight_node(self) as DaylightNode
 	if daylight_node:
-		var factor = pow(1.15, daylight_node.day_num)
+		var factor = pow(1.08, daylight_node.day_num)
 		$HealthNode.max_value = 100 * factor
 		$HealthNode.current_value = $HealthNode.max_value
+		
+		var speed_factor = pow(1.05, daylight_node.day_num)
+		speed = speed * speed_factor
 	zombie_navigation = find_navigation()
 
 func navigate():
