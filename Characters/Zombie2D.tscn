@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Textures/sprite_zombie.png" type="Texture" id=1]
+[ext_resource path="res://Textures/Zombies/sprite_zombie.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Zombie2D.gd" type="Script" id=2]
 [ext_resource path="res://Characters/ValueNode.gd" type="Script" id=3]
 

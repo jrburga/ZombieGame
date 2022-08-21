@@ -51,8 +51,8 @@ color = Color( 0.00784314, 0, 0.0980392, 1 )
 
 [node name="DaylightNode" type="Node2D" parent="."]
 script = ExtResource( 12 )
-day_length = 10
-night_length = 60.0
+day_length = 3.0
+night_length = 30.0
 day_percent = 1
 blood_moon_percent = 0
 day_color = Color( 1, 1, 0.788235, 1 )
