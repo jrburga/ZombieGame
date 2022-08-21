@@ -19,6 +19,12 @@ export(float) var speed : float = 10
 var dying = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var daylight_node = DaylightMgr.get_daylight_node(self) as DaylightNode
+	if daylight_node:
+		var factor = pow(1.15, daylight_node.day_num)
+		$HealthNode.max_value = 100 * factor
+		$HealthNode.current_value = $HealthNode.max_value
+		print($HealthNode.current_value)
 	zombie_navigation = find_navigation()
 
 func navigate():
