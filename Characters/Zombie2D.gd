@@ -4,6 +4,7 @@ class_name Zombie2D
 enum {
 	IDLE,
 	CHASING,
+	FLEEING,
 	ATTACKING,
 	STUNNED
 }

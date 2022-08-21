@@ -1,6 +1,8 @@
 extends Node
 
 var _daylight_node : WeakRef
+signal daylight_node_ready(daylight_node)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -13,6 +15,12 @@ static func get_daylight_mgr(context):
 static func register_daylight_node(node):
 	get_daylight_mgr(node)._daylight_node = weakref(node)
 	
+
+static func async_get_daylight_node(context):
+	while not get_daylight_mgr(context)._daylight_node.get_ref():
+		yield(context.get_tree(), "idle_frame")
+	return get_daylight_mgr(context)._daylight_node.get_ref()
+		
 static func get_daylight_node(context):
-	get_daylight_mgr(context)._daylight_node.get_ref()
+	return get_daylight_mgr(context)._daylight_node.get_ref()
 

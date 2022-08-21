@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Main/TS_Cabin.tres" type="TileSet" id=1]
 [ext_resource path="res://Textures/house_tilesheet.png" type="Texture" id=2]
+[ext_resource path="res://Props/Window.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 2.5, 2 )
@@ -16,6 +17,14 @@ extents = Vector2( 4.5, 2 )
 atlas = ExtResource( 2 )
 region = Rect2( 85, 47, 9, 11 )
 
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 25, 107, 9, 11 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 85, 107, 9, 11 )
+
 [sub_resource type="OccluderPolygon2D" id=6]
 polygon = PoolVector2Array( -21, -4, -15, -4, -15, 0, -21, 0 )
 
@@ -23,6 +32,7 @@ polygon = PoolVector2Array( -21, -4, -15, -4, -15, 0, -21, 0 )
 polygon = PoolVector2Array( 1, -4, -6, -4, -6, 0, 1, 0 )
 
 [node name="Window" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
@@ -46,17 +56,31 @@ collision_mask = 0
 position = Vector2( -3, -2 )
 shape = SubResource( 4 )
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+[node name="WindowBody" type="StaticBody2D" parent="."]
 collision_layer = 8
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WindowBody"]
 position = Vector2( -10.5, -2 )
 shape = SubResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -15, -14 )
+[node name="SpriteRoot" type="Node2D" parent="."]
+
+[node name="Closed_Glass" type="Sprite" parent="SpriteRoot"]
+position = Vector2( -15, -13 )
 texture = SubResource( 2 )
+centered = false
+
+[node name="Closed_Broken" type="Sprite" parent="SpriteRoot"]
+visible = false
+position = Vector2( -15, -13 )
+texture = SubResource( 8 )
+centered = false
+
+[node name="Open" type="Sprite" parent="SpriteRoot"]
+visible = false
+position = Vector2( -15, -13 )
+texture = SubResource( 9 )
 centered = false
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]

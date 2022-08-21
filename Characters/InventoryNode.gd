@@ -14,3 +14,10 @@ func get_weapon(index):
 	if index >= 0 and index < weapons.size():
 		return weapons[index]
 	return null
+	
+func find_weapon(id):
+	for weapon in weapons:
+		if weapon is WeaponResource:
+			if weapon.id == id:
+				return weapon
+	return null

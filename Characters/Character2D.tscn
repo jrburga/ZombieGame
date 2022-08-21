@@ -201,6 +201,7 @@ BulletScene = ExtResource( 6 )
 [node name="LightEnvironment" type="Light2D" parent="."]
 texture = SubResource( 8 )
 texture_scale = 0.5
+energy = 0.5
 shadow_enabled = true
 shadow_gradient_length = 0.3
 shadow_filter = 2

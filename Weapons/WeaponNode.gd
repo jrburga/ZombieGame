@@ -39,6 +39,25 @@ func _unhandled_input(event):
 				var new_index = (current_index + 1) % num_weapons
 				set_weapon(inventory.get_weapon(new_index))
 				
+	if event is InputEventKey:
+		var inventory = owner.find_node("InventoryNode") as InventoryNode
+		if event.scancode == KEY_1:
+			set_weapon(inventory.get_weapon(0))
+		if event.scancode == KEY_2:
+			set_weapon(inventory.get_weapon(1))
+		if event.scancode == KEY_3:
+			set_weapon(inventory.get_weapon(2))
+		if event.scancode == KEY_4:
+			set_weapon(inventory.get_weapon(3))
+		if event.scancode == KEY_5:
+			set_weapon(inventory.get_weapon(4))
+		if event.scancode == KEY_6:
+			set_weapon(inventory.get_weapon(5))
+		if event.scancode == KEY_7:
+			set_weapon(inventory.get_weapon(6))
+		if event.scancode == KEY_8:
+			set_weapon(inventory.get_weapon(7))
+				
 	if weapon_child and event is InputEvent:
 		if event.is_action_pressed("attack_primary"):
 			weapon_child.trigger_primary_pressed()

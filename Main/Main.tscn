@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Characters/Character2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Zombie2D.tscn" type="PackedScene" id=2]
@@ -14,7 +14,9 @@
 [ext_resource path="res://Main/DaylightNode.gd" type="Script" id=12]
 [ext_resource path="res://Rooms/Room.gd" type="Script" id=13]
 [ext_resource path="res://Props/Window2.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Main/Rooms.gd" type="Script" id=15]
+[ext_resource path="res://Rooms/Rooms.gd" type="Script" id=15]
+[ext_resource path="res://Main/ZombiesNode.gd" type="Script" id=16]
+[ext_resource path="res://Props/Door.tscn" type="PackedScene" id=17]
 
 [sub_resource type="StreamTexture" id=2]
 flags = 4
@@ -43,21 +45,29 @@ zoom = Vector2( 0.25, 0.25 )
 script = ExtResource( 4 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.00784314, 0, 0.0980392, 1 )
 
 [node name="DaylightNode" type="Node2D" parent="."]
 script = ExtResource( 12 )
-day_percent = 0.0
-blood_moon_percent = 0
+night_length = 60.0
 day_color = Color( 1, 1, 0.788235, 1 )
 night_color = Color( 0, 0, 0, 1 )
 blood_moon_color = Color( 0.870588, 0.207843, 0.207843, 1 )
 
 [node name="GlobalLight" type="Light2D" parent="DaylightNode"]
-position = Vector2( 120, -20 )
-scale = Vector2( 6.76563, 4.625 )
+position = Vector2( 133, -20 )
+scale = Vector2( 6.96875, 4.625 )
 texture = ExtResource( 11 )
-color = Color( 0, 0, 0, 1 )
+color = Color( 1, 1, 0.788235, 1 )
+
+[node name="DayTimer" type="Timer" parent="DaylightNode"]
+wait_time = 10.0
+one_shot = true
+
+[node name="NightTimer" type="Timer" parent="DaylightNode"]
+one_shot = true
+
+[node name="Tween" type="Tween" parent="DaylightNode"]
 
 [node name="Grass" type="TileMap" parent="."]
 tile_set = ExtResource( 10 )
@@ -73,46 +83,35 @@ tile_data = PoolIntArray( -65542, 1, 0, -65541, 1, 2, -65540, 1, 1, -65539, 1, 3
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Zombie2D" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -49, 57 )
+[node name="Zombies" type="YSort" parent="YSort"]
+script = ExtResource( 16 )
 
-[node name="ZombieSpawner1" type="Position2D" parent="YSort"]
-visible = false
-position = Vector2( 134, -65 )
+[node name="ZombieSpawner1" type="YSort" parent="YSort/Zombies"]
+position = Vector2( 14, 77 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
-PlayAreaRoot = NodePath("..")
-cooldown = 13.0
+cooldown = 3.0
 
-[node name="ZombieSpawner2" type="Position2D" parent="YSort"]
-visible = false
-position = Vector2( -142, -85 )
+[node name="ZombieSpawner2" type="YSort" parent="YSort/Zombies"]
+position = Vector2( -71, -87 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
-PlayAreaRoot = NodePath("..")
 delay = 2.0
-cooldown = 17.0
+cooldown = 3.0
 
-[node name="ZombieSpawner3" type="Position2D" parent="YSort"]
-visible = false
-position = Vector2( 125, 82 )
+[node name="ZombieSpawner3" type="YSort" parent="YSort/Zombies"]
+position = Vector2( -52, 78 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
-PlayAreaRoot = NodePath("..")
 delay = 5.0
-cooldown = 9.0
+cooldown = 3.0
 
-[node name="ZombieSpawner4" type="Position2D" parent="YSort"]
-visible = false
+[node name="ZombieSpawner4" type="YSort" parent="YSort/Zombies"]
 position = Vector2( -125, 76 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
-PlayAreaRoot = NodePath("..")
 delay = 3.0
-cooldown = 19.0
-
-[node name="Window" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( -40, 40 )
+cooldown = 3.0
 
 [node name="Character2D" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( -66, -7 )
@@ -123,10 +122,22 @@ cell_size = Vector2( 20, 20 )
 cell_tile_origin = 2
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( -131078, 3, 0, -131077, 3, 1, -131076, 3, 196612, -131075, 3, 1, -131074, 3, 1, -131073, 3, 1, -196608, 3, 2, -196607, 3, 0, -196606, 3, 1, -196605, 3, 1, -196604, 3, 1, -196603, 3, 1, -196602, 3, 2, -131071, 3, 65536, -131066, 3, 65538, -65535, 3, 262147, -65530, 3, 65538, 1, 3, 65536, 6, 3, 65538, 131066, 3, 327683, 131067, 3, 131073, 131068, 3, 131073, 131069, 3, 131076, 131070, 3, 131073, 131071, 3, 131073, 65536, 3, 327685, 65537, 3, 131072, 65538, 3, 131073, 65539, 3, 131073, 65540, 3, 131073, 65541, 3, 131073, 65542, 3, 131074 )
+tile_data = PoolIntArray( -131078, 3, 0, -131077, 3, 1, -131076, 3, 196612, -131075, 3, 1, -131074, 3, 1, -131073, 3, 1, -196608, 3, 2, -196607, 3, 0, -196606, 3, 1, -196605, 3, 1, -196604, 3, 1, -196603, 3, 1, -196602, 3, 2, -131071, 3, 65536, -131066, 3, 65538, -65535, 3, 262147, -65530, 3, 65538, 1, 3, 65536, 6, 3, 65538, 131066, 3, 327683, 131067, 3, 131073, 131068, 3, 131073, 131069, 3, 327684, 131070, 3, 131073, 131071, 3, 131073, 65536, 3, 327685, 65537, 3, 131072, 65538, 3, 131073, 65539, 3, 131073, 65540, 3, 131073, 65541, 3, 131073, 65542, 3, 131074 )
+
+[node name="Window3" parent="YSort/Walls" instance=ExtResource( 9 )]
+position = Vector2( -40, 40 )
 
 [node name="Window" parent="YSort/Walls" instance=ExtResource( 14 )]
-position = Vector2( -59, -36 )
+position = Vector2( -59, -40 )
+
+[node name="StaticBody2D3" parent="YSort/Walls/Window" instance=ExtResource( 17 )]
+position = Vector2( 79, 40 )
+
+[node name="Window2" parent="YSort/Walls" instance=ExtResource( 9 )]
+position = Vector2( -95, 40 )
+
+[node name="Window4" parent="YSort/Walls" instance=ExtResource( 9 )]
+position = Vector2( 15, 38 )
 
 [node name="Rooms" type="Node2D" parent="YSort"]
 script = ExtResource( 15 )
