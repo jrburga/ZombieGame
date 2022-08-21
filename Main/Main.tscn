@@ -32,6 +32,8 @@ load_path = "res://.import/white_16x16.png-f234986ef7de72f3693fd9d6dca9001f.stex
 [node name="Main" type="Node2D"]
 script = ExtResource( 18 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 5 )]
@@ -49,7 +51,10 @@ color = Color( 0.00784314, 0, 0.0980392, 1 )
 
 [node name="DaylightNode" type="Node2D" parent="."]
 script = ExtResource( 12 )
+day_length = 10
 night_length = 60.0
+day_percent = 1
+blood_moon_percent = 0
 day_color = Color( 1, 1, 0.788235, 1 )
 night_color = Color( 0, 0, 0, 1 )
 blood_moon_color = Color( 0.870588, 0.207843, 0.207843, 1 )
