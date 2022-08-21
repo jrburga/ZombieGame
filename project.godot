@@ -69,6 +69,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Main/MusicPlayer.gd"
 }, {
+"base": "Area2D",
+"class": "RoomArea2D",
+"language": "GDScript",
+"path": "res://Rooms/Room.gd"
+}, {
+"base": "Node2D",
+"class": "RoomsNode",
+"language": "GDScript",
+"path": "res://Main/Rooms.gd"
+}, {
 "base": "Object",
 "class": "Util",
 "language": "GDScript",
@@ -117,6 +127,8 @@ _global_script_class_icons={
 "HealthBar": "",
 "InventoryNode": "",
 "MusicPlayer": "",
+"RoomArea2D": "",
+"RoomsNode": "",
 "Util": "",
 "ValueNode": "",
 "WeaponBase": "",
