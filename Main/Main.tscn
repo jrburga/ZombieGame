@@ -5,8 +5,6 @@
 [ext_resource path="res://Main/ZombieSpawner.gd" type="Script" id=3]
 [ext_resource path="res://Main/CameraFollow2D.gd" type="Script" id=4]
 [ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Audio/zombie_contra.mp3" type="AudioStream" id=6]
-[ext_resource path="res://Main/MusicPlayer.gd" type="Script" id=7]
 [ext_resource path="res://Rooms/Room0.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Props/Window.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Main/TS_Cabin.tres" type="TileSet" id=10]
@@ -17,6 +15,8 @@
 [ext_resource path="res://Rooms/Rooms.gd" type="Script" id=15]
 [ext_resource path="res://Main/ZombiesNode.gd" type="Script" id=16]
 [ext_resource path="res://Props/Door.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Main/Main.gd" type="Script" id=18]
+[ext_resource path="res://UI/Screens/EndScreen.tscn" type="PackedScene" id=19]
 
 [sub_resource type="StreamTexture" id=2]
 flags = 4
@@ -30,14 +30,14 @@ flags = 4
 load_path = "res://.import/white_16x16.png-f234986ef7de72f3693fd9d6dca9001f.stex"
 
 [node name="Main" type="Node2D"]
-
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-script = ExtResource( 7 )
+script = ExtResource( 18 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 5 )]
+
+[node name="EndScreen" parent="CanvasLayer" instance=ExtResource( 19 )]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -90,28 +90,32 @@ script = ExtResource( 16 )
 position = Vector2( 14, 77 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
-cooldown = 3.0
+cooldown = 15.0
+variance = 5.0
 
 [node name="ZombieSpawner2" type="YSort" parent="YSort/Zombies"]
 position = Vector2( -71, -87 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
 delay = 2.0
-cooldown = 3.0
+cooldown = 15.0
+variance = 5.0
 
 [node name="ZombieSpawner3" type="YSort" parent="YSort/Zombies"]
 position = Vector2( -52, 78 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
 delay = 5.0
-cooldown = 3.0
+cooldown = 15.0
+variance = 5.0
 
 [node name="ZombieSpawner4" type="YSort" parent="YSort/Zombies"]
 position = Vector2( -125, 76 )
 script = ExtResource( 3 )
 ZombieScene = ExtResource( 2 )
 delay = 3.0
-cooldown = 3.0
+cooldown = 15.0
+variance = 5.0
 
 [node name="Character2D" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( -66, -7 )
@@ -124,20 +128,24 @@ cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( -131078, 3, 0, -131077, 3, 1, -131076, 3, 196612, -131075, 3, 1, -131074, 3, 1, -131073, 3, 1, -196608, 3, 2, -196607, 3, 0, -196606, 3, 1, -196605, 3, 1, -196604, 3, 1, -196603, 3, 1, -196602, 3, 2, -131071, 3, 65536, -131066, 3, 65538, -65535, 3, 262147, -65530, 3, 65538, 1, 3, 65536, 6, 3, 65538, 131066, 3, 327683, 131067, 3, 131073, 131068, 3, 131073, 131069, 3, 327684, 131070, 3, 131073, 131071, 3, 131073, 65536, 3, 327685, 65537, 3, 131072, 65538, 3, 131073, 65539, 3, 131073, 65540, 3, 131073, 65541, 3, 131073, 65542, 3, 131074 )
 
+[node name="Door" parent="YSort/Walls" instance=ExtResource( 17 )]
+position = Vector2( 20, 0 )
+
 [node name="Window3" parent="YSort/Walls" instance=ExtResource( 9 )]
 position = Vector2( -40, 40 )
+state = 2
 
 [node name="Window" parent="YSort/Walls" instance=ExtResource( 14 )]
 position = Vector2( -59, -40 )
-
-[node name="StaticBody2D3" parent="YSort/Walls/Window" instance=ExtResource( 17 )]
-position = Vector2( 79, 40 )
+state = 2
 
 [node name="Window2" parent="YSort/Walls" instance=ExtResource( 9 )]
 position = Vector2( -95, 40 )
+state = 2
 
 [node name="Window4" parent="YSort/Walls" instance=ExtResource( 9 )]
 position = Vector2( 15, 38 )
+state = 2
 
 [node name="Rooms" type="Node2D" parent="YSort"]
 script = ExtResource( 15 )

@@ -10,7 +10,7 @@ extents = Vector2( 2, 10 )
 atlas = ExtResource( 2 )
 region = Rect2( 113, 21, 4, 11 )
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="Door" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -7, -13 )

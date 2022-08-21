@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zombi_contra.mp3-ef34f32a77bda972a422782a349198b1.mp3str"
+
+[deps]
+
+source_file="res://Audio/zombi_contra.mp3"
+dest_files=[ "res://.import/zombi_contra.mp3-ef34f32a77bda972a422782a349198b1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

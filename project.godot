@@ -55,6 +55,11 @@ _global_script_classes=[ {
 "path": "res://Main/DaylightNode.gd"
 }, {
 "base": "Control",
+"class": "EndScreen",
+"language": "GDScript",
+"path": "res://UI/Screens/EndScreen.gd"
+}, {
+"base": "Control",
 "class": "HealthBar",
 "language": "GDScript",
 "path": "res://UI/HealthBar.gd"
@@ -139,6 +144,7 @@ _global_script_class_icons={
 "Crosshair": "",
 "DamageDetails": "",
 "DaylightNode": "",
+"EndScreen": "",
 "HealthBar": "",
 "InventoryNode": "",
 "MusicPlayer": "",
@@ -159,7 +165,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ZombieGame"
-run/main_scene="res://Main/Main.tscn"
+run/main_scene="res://Title/TitleScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]

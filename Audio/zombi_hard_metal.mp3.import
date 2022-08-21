@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zombi_hard_metal.mp3-e6e2c931b33d4337f9ce0e07311065a5.mp3str"
+
+[deps]
+
+source_file="res://Audio/zombi_hard_metal.mp3"
+dest_files=[ "res://.import/zombi_hard_metal.mp3-e6e2c931b33d4337f9ce0e07311065a5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

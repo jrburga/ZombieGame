@@ -6,6 +6,7 @@ export(bool) var enabled = false setget _set_enabled
 export(PackedScene) var ZombieScene
 export(float) var delay = 0
 export(float) var cooldown = 30
+export(float) var variance = 3
 
 var spawn_timer
 
@@ -15,7 +16,9 @@ func _set_enabled(value):
 		start_spawner()
 	
 func start_spawner():
-	spawn_timer.start(cooldown)
+	yield(get_tree().create_timer(delay), "timeout")
+	if enabled:
+		spawn_timer.start(cooldown)
 	
 func stop_spawner():
 	spawn_timer.stop()
@@ -23,7 +26,8 @@ func stop_spawner():
 func _on_spawn_timer_timeout():
 	spawn_zombie()
 	if enabled:
-		spawn_timer.start(cooldown)
+		var rand_variance = randf() * variance
+		spawn_timer.start(cooldown + rand_variance)
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
