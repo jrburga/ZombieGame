@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Weapons/Resources/WR_Pistol.tres" type="Resource" id=1]
 [ext_resource path="res://Characters/Character2D.gd" type="Script" id=2]
@@ -35,6 +35,9 @@ atlas = ExtResource( 4 )
 region = Rect2( 8, 5, 6, 10 )
 
 [sub_resource type="ViewportTexture" id=8]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="ViewportTexture" id=27]
 viewport_path = NodePath("Viewport")
 
 [sub_resource type="AnimationNodeAnimation" id=20]
@@ -148,6 +151,7 @@ loop = true
 extents = Vector2( 2, 4 )
 
 [node name="Character2D" type="KinematicBody2D"]
+light_mask = 2
 collision_layer = 2
 collision_mask = 137
 script = ExtResource( 2 )
@@ -195,9 +199,17 @@ BulletScene = ExtResource( 6 )
 [node name="Viewport" parent="." instance=ExtResource( 3 )]
 
 [node name="LightEnvironment" type="Light2D" parent="."]
-visible = false
 texture = SubResource( 8 )
 texture_scale = 0.5
+shadow_enabled = true
+shadow_gradient_length = 0.3
+shadow_filter = 2
+shadow_filter_smooth = 0.3
+
+[node name="LightCharacter" type="Light2D" parent="."]
+visible = false
+texture = SubResource( 27 )
+shadow_item_cull_mask = 2
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 23 )
