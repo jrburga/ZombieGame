@@ -22,8 +22,9 @@ func _ready():
 			wd.current_ammo = wd.weapon_resource.magazine_size
 			inventory.add_weapon(wd)
 			
-		var weapon = inventory.get_weapon(0)
+		var weapon = inventory.get_weapon(3)
 		if weapon:
+			print(weapon)
 			set_weapon(weapon)
 	
 func _unhandled_input(event):

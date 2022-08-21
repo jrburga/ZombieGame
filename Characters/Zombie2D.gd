@@ -22,11 +22,10 @@ func _ready():
 	var daylight_node = DaylightMgr.get_daylight_node(self) as DaylightNode
 	if daylight_node:
 		var factor = pow(1.08, daylight_node.day_num)
-		$HealthNode.max_value = 100 * factor
+		$HealthNode.max_value = 50 * factor
 		$HealthNode.current_value = $HealthNode.max_value
 		
 		var speed_factor = pow(1.05, daylight_node.day_num)
-		speed = speed * speed_factor
 	zombie_navigation = find_navigation()
 
 func navigate():
@@ -35,7 +34,7 @@ func navigate():
 		velocity = global_position.direction_to(path[1]) * speed
 		
 		var dist_to_path : Vector2 = (path[0] - global_position)
-		if dist_to_path.is_equal_approx(Vector2(0, 0)):
+		if dist_to_path.length() < 3:
 			path.remove(0)
 	return velocity
 		
@@ -68,14 +67,15 @@ func find_closest_window():
 var knock_back = Vector2()
 
 var regenerate_seconds = 0
-var regenerate_wait_time = 2
+var regenerate_wait_time = 0
 func _physics_process(delta):
 	
-	regenerate_seconds = min(0, regenerate_seconds - delta)
+	regenerate_seconds = max(0, regenerate_seconds - delta)
 	var character = PlayerMgr.get_player(self)
 	if dying:
 		return
 		
+	
 	if knock_back.length_squared() > 0:
 		if state == ATTACKING:
 			$AnimationPlayer.seek(0)
@@ -85,8 +85,9 @@ func _physics_process(delta):
 		move_and_slide(velocity)
 		knock_back *= .1
 		state = STUNNED
-		
 		return
+		
+	state = IDLE
 		
 	if is_instance_valid(character):
 		var distance = character.global_position - global_position
@@ -112,6 +113,8 @@ func _physics_process(delta):
 			if regenerate_seconds <= 0:
 				generate_path(character.global_position)
 				regenerate_seconds = regenerate_wait_time
+			
+		if zombie_navigation and path.size() > 0:
 			velocity = navigate()
 		else:
 			var direction = distance.normalized()
@@ -120,6 +123,7 @@ func _physics_process(delta):
 			$SpriteRoot.scale.x = -1
 		else:
 			$SpriteRoot.scale.x = 1
+
 		move_and_slide(velocity)
 		return
 
@@ -142,8 +146,7 @@ func take_damage(damage_details : DamageDetails):
 		knock_back = damage_details.knock_back_direction * damage_details.knock_back_power
 
 func attack():
-	if state == STUNNED:
-		return
+
 	$AnimationPlayer.play("attack_0")
 	state = ATTACKING
 	yield($AnimationPlayer, "animation_finished")

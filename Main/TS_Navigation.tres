@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=9 format=2]
+[gd_resource type="TileSet" load_steps=13 format=2]
 
 [ext_resource path="res://Textures/navigation-tiles.png" type="Texture" id=1]
 
@@ -23,19 +23,32 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 0, 10, 20, 10, 20, 20, 0, 20 ) ]
 
 [sub_resource type="NavigationPolygon" id=5]
-vertices = PoolVector2Array( 5, 0, 15, 0, 15, 20, 5, 20 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 5, 0, 15, 0, 15, 20, 5, 20 ) ]
+vertices = PoolVector2Array( 0, 0, 0, 15, 5, 15, 5, 20, 15, 20, 15, 15, 20, 15, 20, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7 ) ]
 
 [sub_resource type="NavigationPolygon" id=6]
-vertices = PoolVector2Array( 0, 0, 10, 0, 10, 20, 0, 20 )
+vertices = PoolVector2Array( 8, 0, 20, 0, 20, 20, 8, 20 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 0, 0, 10, 0, 10, 20, 0, 20 ) ]
 
 [sub_resource type="NavigationPolygon" id=7]
-vertices = PoolVector2Array( 10, 0, 20, 0, 20, 20, 10, 20 )
+vertices = PoolVector2Array( 0, 6, 20, 6, 20, 20, 0, 20 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 10, 0, 20, 0, 20, 20, 10, 20 ) ]
+
+[sub_resource type="NavigationPolygon" id=8]
+vertices = PoolVector2Array( 0, 20, 10, 20, 10, 15, 15, 15, 15, 0, 0, 0, 0, 19 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6 ) ]
+
+[sub_resource type="NavigationPolygon" id=9]
+vertices = PoolVector2Array( 0, 0, 11, 0, 11, 20, 0, 20 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=10]
+vertices = PoolVector2Array( 0, 0, 20, 0, 20, 14, 0, 14 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=11]
+vertices = PoolVector2Array( 5, 0, 5, 15, 10, 15, 10, 20, 20, 20, 20, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ) ]
 
 [resource]
 0/name = "navigation-tiles.png 0"
@@ -48,7 +61,7 @@ outlines = [ PoolVector2Array( 10, 0, 20, 0, 20, 20, 10, 20 ) ]
 0/autotile/tile_size = Vector2( 20, 20 )
 0/autotile/spacing = 0
 0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [ Vector2( 0, 0 ), SubResource( 1 ), Vector2( 0, 1 ), SubResource( 2 ), Vector2( 0, 2 ), SubResource( 3 ), Vector2( 0, 3 ), SubResource( 4 ), Vector2( 1, 0 ), SubResource( 5 ), Vector2( 2, 0 ), SubResource( 6 ), Vector2( 3, 0 ), SubResource( 7 ) ]
+0/autotile/navpoly_map = [ Vector2( 0, 0 ), SubResource( 1 ), Vector2( 0, 1 ), SubResource( 2 ), Vector2( 0, 2 ), SubResource( 3 ), Vector2( 0, 3 ), SubResource( 4 ), Vector2( 1, 0 ), SubResource( 5 ), Vector2( 1, 1 ), SubResource( 6 ), Vector2( 1, 2 ), SubResource( 7 ), Vector2( 2, 0 ), SubResource( 8 ), Vector2( 2, 1 ), SubResource( 9 ), Vector2( 2, 2 ), SubResource( 10 ), Vector2( 3, 0 ), SubResource( 11 ) ]
 0/autotile/priority_map = [  ]
 0/autotile/z_index_map = [  ]
 0/occluder_offset = Vector2( 0, 0 )

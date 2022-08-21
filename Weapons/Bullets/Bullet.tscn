@@ -36,7 +36,7 @@ initial_velocity_random = 0.7
 color = Color( 0.42, 0.09604, 0.0462, 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -7, 0 )
+position = Vector2( -5, 0 )
 enabled = true
 cast_to = Vector2( 8, 0 )
 collision_mask = 5

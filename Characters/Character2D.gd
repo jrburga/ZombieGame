@@ -54,7 +54,7 @@ func take_damage(damage_details: DamageDetails):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var velocity : Vector2
 var knock_back : Vector2
-func _process(delta):
+func _physics_process(delta):
 	if Engine.editor_hint:
 		return
 		

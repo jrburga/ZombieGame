@@ -8,6 +8,8 @@ export(float) var delay = 0
 export(float) var cooldown = 30
 export(float) var variance = 3
 
+var _started = false
+
 var spawn_timer
 
 func _set_enabled(value):
@@ -16,13 +18,20 @@ func _set_enabled(value):
 		start_spawner()
 	
 func start_spawner():
+	if _started:
+		return
+	_started = true
 	if delay > 0:
 		yield(get_tree().create_timer(delay), "timeout")
+	if not _started:
+		return
 	if enabled:
 		spawn_zombie()
-		spawn_timer.start(cooldown)
+		var rand_variance = randf() * variance
+		spawn_timer.start(cooldown + rand_variance)
 	
 func stop_spawner():
+	_started = false
 	spawn_timer.stop()
 	
 func _on_spawn_timer_timeout():
@@ -42,9 +51,9 @@ func _ready():
 
 
 func spawn_zombie():
+	print("spawning zombie")
 	if ZombieScene:
 		var zombie_child = ZombieScene.instance()
-		zombie_child.global_position = global_position
 		add_child(zombie_child)
 		
 func kill_spawned_zombies():

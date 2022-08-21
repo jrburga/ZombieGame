@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/blood_squirt.mp3-77e9445c6b7a197eca686f030b6b9583.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/blood_squirt.mp3"
+dest_files=[ "res://.import/blood_squirt.mp3-77e9445c6b7a197eca686f030b6b9583.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
