@@ -24,7 +24,6 @@ func _ready():
 		var factor = pow(1.15, daylight_node.day_num)
 		$HealthNode.max_value = 100 * factor
 		$HealthNode.current_value = $HealthNode.max_value
-		print($HealthNode.current_value)
 	zombie_navigation = find_navigation()
 
 func navigate():
@@ -132,8 +131,8 @@ func begin_die():
 	
 func take_damage(damage_details : DamageDetails):
 	var damage_multiplier = 1
-	if $HurtAreaHead2D == damage_details.hurt_area:
-		damage_multiplier = 5
+#	if $HurtAreaHead2D == damage_details.hurt_area:
+#		damage_multiplier = 5
 	$HealthNode.update_value(damage_details.delta_health * damage_multiplier)
 	
 	if damage_details.knock_back:		

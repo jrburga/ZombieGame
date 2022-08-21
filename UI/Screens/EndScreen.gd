@@ -7,7 +7,7 @@ class_name EndScreen
 # var b = "text"
 
 
-func set_screen_wen():
+func set_screen_win():
 	$WinScreen.visible = true
 	$DeathScreen.visible = false
 	

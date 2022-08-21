@@ -112,8 +112,5 @@ func _on_InteractionArea_area_exited(area):
 		
 func begin_die():
 	state = DEAD
-	emit_signal("begin_dying")
 	$AnimationTree.set('parameters/state/current', DEAD)
-	yield(get_tree().create_timer(2), "timeout")
-	emit_signal("finished_dying")
 

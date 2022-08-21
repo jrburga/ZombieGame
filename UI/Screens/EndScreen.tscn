@@ -21,12 +21,14 @@ margin_left = 346.0
 margin_top = 303.0
 margin_right = 562.0
 margin_bottom = 343.0
+mouse_default_cursor_shape = 2
 
 [node name="QuitButton" type="TextureButton" parent="DeathScreen"]
 margin_left = 325.0
 margin_top = 369.0
 margin_right = 522.0
 margin_bottom = 414.0
+mouse_default_cursor_shape = 2
 
 [node name="WinScreen" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -39,12 +41,14 @@ margin_left = 265.0
 margin_top = 233.0
 margin_right = 575.0
 margin_bottom = 292.0
+mouse_default_cursor_shape = 2
 
 [node name="Quit" type="TextureButton" parent="WinScreen"]
 margin_left = 274.0
 margin_top = 328.0
 margin_right = 577.0
 margin_bottom = 379.0
+mouse_default_cursor_shape = 2
 
 [connection signal="pressed" from="DeathScreen/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="DeathScreen/QuitButton" to="." method="_on_QuitButton_pressed"]
