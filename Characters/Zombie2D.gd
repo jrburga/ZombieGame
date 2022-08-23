@@ -129,12 +129,16 @@ func _physics_process(delta):
 
 func begin_die():
 	dying = true
-	$HurtAreaBody2D/CollisionShape2D.disabled = true
-	$HurtAreaHead2D/CollisionShape2D.disabled = true
-	for n in range(10):
-		modulate.a *= .8
-		yield(get_tree().create_timer(.1), "timeout")
-	queue_free()
+	$HurtAreaBody2D/CollisionShape2D.set_deferred("disabled", true)
+	$HurtAreaHead2D/CollisionShape2D.set_deferred("disabled", true)
+
+	$CollisionShape2D.disabled = true
+	
+	print("dying")
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(1, 1, 1, 0), .5)
+	tween.tween_callback($Sprite, "queue_free")
+	print(tween)
 	
 func take_damage(damage_details : DamageDetails):
 	var damage_multiplier = 1
