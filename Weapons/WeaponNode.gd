@@ -24,7 +24,6 @@ func _ready():
 			
 		var weapon = inventory.get_weapon(3)
 		if weapon:
-			print(weapon)
 			set_weapon(weapon)
 	
 func _unhandled_input(event):

@@ -18,6 +18,10 @@ func _set_enabled(value):
 		start_spawner()
 	
 func start_spawner():
+	var daylight_node = DaylightMgr.get_daylight_node(self) as DaylightNode
+	if daylight_node:
+		cooldown = range_lerp(daylight_node.day_num, 0, 12, 15, 8)
+		print(cooldown)
 	if _started:
 		return
 	_started = true
