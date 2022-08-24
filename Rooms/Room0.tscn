@@ -3,7 +3,7 @@
 [ext_resource path="res://Rooms/Room.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 70, 40 )
+extents = Vector2( 64.5, 41 )
 
 [node name="RoomArea2D" type="Area2D"]
 show_behind_parent = true
