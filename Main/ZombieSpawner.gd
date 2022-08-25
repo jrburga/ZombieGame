@@ -4,9 +4,9 @@ class_name ZombieSpawner
 
 export(bool) var enabled = false setget _set_enabled
 export(PackedScene) var ZombieScene
-export(float) var delay = 0
-export(float) var cooldown = 30
-export(float) var variance = 3
+export(float) var delay = 0.0
+export(float) var cooldown = 30.0
+export(float) var variance = 3.0
 
 var _started = false
 
@@ -21,7 +21,6 @@ func start_spawner():
 	var daylight_node = DaylightMgr.get_daylight_node(self) as DaylightNode
 	if daylight_node:
 		cooldown = range_lerp(daylight_node.day_num, 0, 12, 15, 8)
-		print(cooldown)
 	if _started:
 		return
 	_started = true
@@ -55,7 +54,6 @@ func _ready():
 
 
 func spawn_zombie():
-	print("spawning zombie")
 	if ZombieScene:
 		var zombie_child = ZombieScene.instance()
 		add_child(zombie_child)

@@ -2,13 +2,13 @@ extends Node2D
 class_name BulletSpawner
 
 export(PackedScene) var BulletScene : PackedScene
-export(float) var bullet_speed = 300
-export(float) var bullet_range = 100
+export(float) var bullet_speed = 300.0
+export(float) var bullet_range = 100.0
 export(float) var bullet_lifetime = 0.25
 export(int) var bullets_spawned = 1
-export(float) var seconds_per_bullet = 0
-export(float) var spread = 0
-export(float) var cooldown = 0
+export(float) var seconds_per_bullet = 0.0
+export(float) var spread = 0.0
+export(float) var cooldown = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,7 +29,6 @@ func spawn_bullets(target_position : Vector2):
 		var bullet = BulletScene.instance() as Bullet
 		bullet.lifetime = bullet_lifetime
 		bullet.bullet_range = bullet_range
-		bullet.target_position = target_position
 		bullet.global_position = global_position
 		
 		var delta = target_position - owner.global_position
@@ -39,9 +38,7 @@ func spawn_bullets(target_position : Vector2):
 		var angle_rad = deg2rad(angle_deg)
 		
 		direction = direction.rotated(angle_rad)
-		
-		
-		bullet.target_position = target_position
+	
 		bullet.velocity = direction * bullet_speed
 		
 		

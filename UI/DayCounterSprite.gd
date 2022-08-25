@@ -6,7 +6,7 @@ func _process(delta):
 	if daylight_node:
 		set_day_num(daylight_node.day_num)
 	
-func set_day_num(day_num):
+func set_day_num(day_num : int):
 	frame = clamp(day_num, 0, 12)
 	
 	if day_num in [0, 1]:

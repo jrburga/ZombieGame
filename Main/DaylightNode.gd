@@ -7,12 +7,12 @@ enum TOD {
 	NIGHT
 }
 
-export(int, 0, 12) var day_num = 0
+export(int, 0, 12) var day_num : int = 0
 export(TOD) var time_of_day = TOD.NIGHT
-export(float) var day_length = 10
-export(float) var night_length = 10
-export(float, 0, 1) var day_percent = 1
-export(float, 0, 1) var blood_moon_percent = 0
+export(float) var day_length = 10.0
+export(float) var night_length = 10.0
+export(float, 0, 1) var day_percent = 1.0
+export(float, 0, 1) var blood_moon_percent = 0.0
 export(Color) var day_color = Color.white
 export(Color) var night_color = Color.white
 export(Color) var blood_moon_color = Color.white

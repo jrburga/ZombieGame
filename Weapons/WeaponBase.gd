@@ -44,7 +44,6 @@ func _ready():
 	
 func update_bullet_spawner():
 	var weapon_res = get_weapon_resource()
-	var bullet_spawner = find_node("BulletSpawner")
 	if bullet_spawner:
 		bullet_spawner.bullet_speed = weapon_res.bullet_speed
 		bullet_spawner.bullet_lifetime = weapon_res.bullet_lifetime

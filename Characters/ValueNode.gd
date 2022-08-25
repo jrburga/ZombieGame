@@ -1,9 +1,9 @@
 extends Node
 class_name ValueNode
 
-export(float) var min_value = 0 setget set_min_value
-export(float) var max_value = 100 setget set_max_value
-export(float) var current_value = 100 setget set_current_value
+export(float) var min_value : float = 0 setget set_min_value
+export(float) var max_value : float = 100 setget set_max_value
+export(float) var current_value : float = 100 setget set_current_value
 
 signal current_value_changed(min_value, max_value, value_node)
 

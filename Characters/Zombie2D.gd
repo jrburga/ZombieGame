@@ -26,6 +26,7 @@ func _ready():
 		$HealthNode.current_value = $HealthNode.max_value
 		
 		var speed_factor = pow(1.05, daylight_node.day_num)
+		speed = speed * speed_factor
 	zombie_navigation = find_navigation()
 
 func navigate():
@@ -132,13 +133,12 @@ func begin_die():
 	$HurtAreaBody2D/CollisionShape2D.set_deferred("disabled", true)
 	$HurtAreaHead2D/CollisionShape2D.set_deferred("disabled", true)
 
-	$CollisionShape2D.disabled = true
 	
-	print("dying")
+	$CollisionShape2D.set_deferred("disabled", true)
+	
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color(1, 1, 1, 0), .5)
-	tween.tween_callback($Sprite, "queue_free")
-	print(tween)
+	tween.tween_callback(self, "queue_free")
 	
 func take_damage(damage_details : DamageDetails):
 	var damage_multiplier = 1

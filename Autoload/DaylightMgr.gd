@@ -1,7 +1,6 @@
 extends Node
 
 var _daylight_node : WeakRef
-signal daylight_node_ready(daylight_node)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

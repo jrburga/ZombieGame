@@ -3,8 +3,7 @@ extends Node
 var music_player : AudioStreamPlayer = null
 var fade_tween : Tween = null
 
-export(float) var volume = 1
-var song_length = 120
+export(float, 0, 1) var volume : float = 1
 
 var zombie_music = preload("res://Audio/zombie_music.mp3")
 var zombi_lvl_1 = preload("res://Audio/zombi_double_bass.mp3")

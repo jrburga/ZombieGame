@@ -20,7 +20,7 @@ signal finished_dying
 func is_dead():
 	return state == DEAD
 
-export(float) var speed = 10
+export(float) var speed = 10.0
 func _ready():
 	if Engine.editor_hint:
 		return
