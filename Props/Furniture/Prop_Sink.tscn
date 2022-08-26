@@ -10,6 +10,8 @@ region = Rect2( 1, 17, 14, 14 )
 extents = Vector2( 7, 3.5 )
 
 [node name="Sink" type="StaticBody2D"]
+collision_layer = 256
+collision_mask = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -14 )

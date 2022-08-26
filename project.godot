@@ -259,6 +259,8 @@ cycle_down={
 2d_physics/layer_5="Rooms"
 2d_physics/layer_6="CharacterFootprint"
 2d_physics/layer_8="OpenWindow"
+2d_physics/layer_9="Furniture_Low"
+2d_physics/layer_10="Furniture_High"
 
 [physics]
 

@@ -210,31 +210,40 @@ state = 2
 
 [node name="Prop_Bed" parent="YSort/Furniture" instance=ExtResource( 20 )]
 position = Vector2( 23, -112 )
+collision_layer = 256
 
 [node name="Chest" parent="YSort/Furniture" instance=ExtResource( 21 )]
 position = Vector2( -41, -112 )
+collision_layer = 256
 
 [node name="Sink" parent="YSort/Furniture" instance=ExtResource( 23 )]
 position = Vector2( 72, -33 )
+collision_layer = 256
 
 [node name="Stove" parent="YSort/Furniture" instance=ExtResource( 26 )]
 position = Vector2( 86, -33 )
+collision_layer = 256
 
 [node name="Table" parent="YSort/Furniture" instance=ExtResource( 24 )]
 position = Vector2( 88, -8 )
+collision_layer = 256
 
 [node name="Chair" parent="YSort/Furniture" instance=ExtResource( 22 )]
 position = Vector2( 97, -9 )
+collision_layer = 256
 
 [node name="Box" parent="YSort/Furniture" instance=ExtResource( 25 )]
 position = Vector2( 19, -27 )
+collision_layer = 256
 
 [node name="Box2" parent="YSort/Furniture" instance=ExtResource( 25 )]
 position = Vector2( 30, -23 )
+collision_layer = 256
 
 [node name="Chair2" parent="YSort/Furniture" instance=ExtResource( 22 )]
 position = Vector2( 86, -10 )
 scale = Vector2( -1, 1 )
+collision_layer = 256
 
 [node name="SideWalls" type="TileMap" parent="."]
 tile_set = ExtResource( 10 )

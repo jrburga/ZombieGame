@@ -71,7 +71,7 @@ nodes/i_frames/position = Vector2( -160, 120 )
 nodes/output/position = Vector2( 460, 180 )
 nodes/state/node = SubResource( 25 )
 nodes/state/position = Vector2( 160, 200 )
-node_connections = [ "state", 0, "i_frames", "state", 1, "Animation 3", "output", 0, "state", "i_frames", 0, "Animation 2", "i_frames", 1, "Animation" ]
+node_connections = [ "i_frames", 0, "Animation 2", "i_frames", 1, "Animation", "state", 0, "i_frames", "state", 1, "Animation 3", "output", 0, "state" ]
 
 [sub_resource type="Animation" id=24]
 resource_name = "die"
@@ -156,7 +156,7 @@ extents = Vector2( 2, 4 )
 [node name="Character2D" type="KinematicBody2D"]
 light_mask = 2
 collision_layer = 32
-collision_mask = 137
+collision_mask = 905
 script = ExtResource( 2 )
 speed = 25.0
 
