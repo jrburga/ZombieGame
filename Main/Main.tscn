@@ -24,7 +24,6 @@ script = ExtResource( 18 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 5 )]
-visible = false
 
 [node name="EndScreen" parent="CanvasLayer" instance=ExtResource( 19 )]
 visible = false
@@ -42,6 +41,7 @@ script = ExtResource( 15 )
 
 [node name="DaylightNode" type="Node2D" parent="."]
 script = ExtResource( 12 )
+day_num = 12
 day_length = 10
 night_length = 60.0
 day_percent = 1

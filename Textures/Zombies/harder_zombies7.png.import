@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite_zombie.png-c76e70932fc384dc0e9547ad67791a82.stex"
+path="res://.import/harder_zombies7.png-46a85a34341843cff8fb013c994122e6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Zombies/sprite_zombie.png"
-dest_files=[ "res://.import/sprite_zombie.png-c76e70932fc384dc0e9547ad67791a82.stex" ]
+source_file="res://Textures/Zombies/harder_zombies7.png"
+dest_files=[ "res://.import/harder_zombies7.png-46a85a34341843cff8fb013c994122e6.stex" ]
 
 [params]
 

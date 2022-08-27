@@ -1,5 +1,16 @@
+tool
 extends KinematicBody2D
 class_name Zombie2D
+
+enum Level {
+	LVL0,
+	LVL1,
+	LVL2,
+	LVL3,
+	LVL4,
+	LVL5,
+	LVL6
+}
 
 enum {
 	IDLE,
@@ -9,16 +20,25 @@ enum {
 	STUNNED
 }
 
+onready var sprite_head = find_node("SpriteHead")
+onready var sprite_body = find_node("SpriteBody")
+onready var sprite_hand_back = find_node("SpriteHandBack")
+onready var sprite_hand_front = find_node("SpriteHandFront")
 
 var zombie_navigation : Navigation2D = null
 var path = null
 var player_found = false
 var state = IDLE
+export(Level) var zombie_level = Level.LVL0
 export(float) var speed : float = 10
 
 var dying = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if Engine.editor_hint:
+		return
+		
+	
 	var daylight_node = DaylightMgr.get_daylight_node(self) as DaylightNode
 	if daylight_node:
 		var factor = pow(1.08, daylight_node.day_num)
@@ -27,6 +47,9 @@ func _ready():
 		
 		var speed_factor = pow(1.05, daylight_node.day_num)
 		speed = speed * speed_factor
+		
+		var daylight_zombie_level = range_lerp(daylight_node.day_num, 0, 12, 0, 6) 
+		_set_zombie_level(daylight_zombie_level)
 	zombie_navigation = find_navigation()
 
 func navigate():
@@ -45,10 +68,24 @@ func generate_path(player_position):
 		path = zombie_navigation.get_simple_path(global_position, player_position, false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
+func _process(delta : float):
+	if Engine.editor_hint:
+		_set_zombie_level(zombie_level)
 
+			
+func _set_zombie_level(level):
+	zombie_level = level
+	var zombie_texture_path = "res://Textures/Zombies/harder_zombies%d.png" % (zombie_level + 1)
+	sprite_head = find_node("SpriteHead")
+	sprite_body = find_node("SpriteBody")
+	sprite_hand_back = find_node("SpriteHandBack")
+	sprite_hand_front = find_node("SpriteHandFront")
+	var atlas = load(zombie_texture_path)
+	for sprite_part in [sprite_head, sprite_body, sprite_hand_back, sprite_hand_front]:
+		var atlas_texture = sprite_part.texture as AtlasTexture
+		atlas_texture.atlas = atlas
+		
 
 func find_navigation():
 	for navigation_node in get_tree().get_nodes_in_group('navigation'):
@@ -70,7 +107,9 @@ var knock_back = Vector2()
 var regenerate_seconds = 0
 var regenerate_wait_time = 0
 func _physics_process(delta):
-	
+	if Engine.editor_hint:
+		return
+		
 	regenerate_seconds = max(0, regenerate_seconds - delta)
 	var character = PlayerMgr.get_player(self)
 	if dying:

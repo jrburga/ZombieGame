@@ -20,7 +20,8 @@ func _set_enabled(value):
 func start_spawner():
 	var daylight_node = DaylightMgr.get_daylight_node(self) as DaylightNode
 	if daylight_node:
-		cooldown = range_lerp(daylight_node.day_num, 0, 12, 15, 8)
+		cooldown = range_lerp(daylight_node.day_num, 0, 12, 15, 4)
+		print(cooldown)
 	if _started:
 		return
 	_started = true
@@ -40,7 +41,7 @@ func stop_spawner():
 func _on_spawn_timer_timeout():
 	spawn_zombie()
 	if enabled:
-		var rand_variance = randf() * variance
+		var rand_variance = 2 * randf() * variance - variance
 		spawn_timer.start(cooldown + rand_variance)
 		
 # Called when the node enters the scene tree for the first time.
