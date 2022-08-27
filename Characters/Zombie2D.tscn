@@ -160,5 +160,11 @@ __meta__ = {
 anims/RESET = SubResource( 10 )
 anims/attack_0 = SubResource( 8 )
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 2.0
+neighbor_dist = 25.0
+
 [connection signal="current_value_changed" from="HealthNode" to="." method="_on_HealthNode_current_value_changed"]
 [connection signal="area_entered" from="HandsRoot/HitArea2D" to="." method="_on_HitArea2D_area_entered"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_velocity_computed"]

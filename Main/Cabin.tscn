@@ -63,7 +63,7 @@ position = Vector2( 0, 40 )
 state = 2
 
 [node name="Door" parent="Walls" instance=ExtResource( 14 )]
-position = Vector2( 16, 0 )
+position = Vector2( 372, 32 )
 z_index = 1
 
 [node name="Furniture" type="YSort" parent="."]

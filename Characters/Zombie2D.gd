@@ -25,6 +25,8 @@ onready var sprite_body = find_node("SpriteBody")
 onready var sprite_hand_back = find_node("SpriteHandBack")
 onready var sprite_hand_front = find_node("SpriteHandFront")
 
+onready var navigation_agent : NavigationAgent2D = find_node("NavigationAgent2D")
+
 var zombie_navigation : Navigation2D = null
 var path = null
 var player_found = false
@@ -51,6 +53,10 @@ func _ready():
 		var daylight_zombie_level = range_lerp(daylight_node.day_num, 0, 12, 0, 6) 
 		_set_zombie_level(daylight_zombie_level)
 	zombie_navigation = find_navigation()
+	navigation_agent.set_navigation(zombie_navigation)
+	var character = PlayerMgr.get_player(self)
+	if character:
+		navigation_agent.set_target_location(character.global_position)
 
 func navigate():
 	var velocity = Vector2()
@@ -106,6 +112,8 @@ var knock_back = Vector2()
 
 var regenerate_seconds = 0
 var regenerate_wait_time = 0
+
+var last_target_location = Vector2()
 func _physics_process(delta):
 	if Engine.editor_hint:
 		return
@@ -149,23 +157,24 @@ func _physics_process(delta):
 				return
 				
 		var velocity = Vector2()
-		if zombie_navigation:
-			if regenerate_seconds <= 0:
-				generate_path(character.global_position)
-				regenerate_seconds = regenerate_wait_time
-			
-		if zombie_navigation and path.size() > 0:
-			velocity = navigate()
-		else:
-			var direction = distance.normalized()
-			velocity = direction * speed
+		
+#		if !last_target_location.is_equal_approx(character.global_position):
+		navigation_agent.set_target_location(character.global_position)
+#		print(navigation_agent.get_nav_path())
+		last_target_location = character.global_position
+
+		var direction = global_position.direction_to(navigation_agent.get_next_location())
+		
+		velocity = direction * speed
+		navigation_agent.set_velocity(velocity)
+		
 		if velocity.x < 0:
 			$SpriteRoot.scale.x = -1
 		else:
 			$SpriteRoot.scale.x = 1
-
-		move_and_slide(velocity)
-		return
+			
+		# movement is done in self._on_NavigationAgent2D_velocity_computed
+		# move_and_slide(velocity)
 
 func begin_die():
 	dying = true
@@ -211,3 +220,7 @@ func _on_HitArea2D_area_entered(area):
 	damage_details.knock_back_power = 100
 	if area.owner.has_method('take_damage'):
 		area.owner.take_damage(damage_details)
+
+
+func _on_NavigationAgent2D_velocity_computed(safe_velocity):
+	move_and_slide(safe_velocity)
