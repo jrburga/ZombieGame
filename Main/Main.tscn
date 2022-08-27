@@ -240,15 +240,6 @@ position = Vector2( 30, -23 )
 position = Vector2( 86, -10 )
 scale = Vector2( -1, 1 )
 
-[node name="SideWalls" type="TileMap" parent="."]
-visible = false
-tile_set = ExtResource( 10 )
-cell_size = Vector2( 20, 20 )
-cell_tile_origin = 2
-cell_y_sort = true
-format = 1
-tile_data = PoolIntArray( -327683, 4, 131076, -393214, 4, 131076, -262147, 4, 131076, -327678, 4, 131076, -196611, 4, 131076, -262142, 4, 131076, -65542, 3, 65536, -131072, 4, 131076, -131066, 3, 65538, -6, 3, 65536, -65536, 4, 4, -65530, 3, 65538, 65530, 3, 65536, 0, 4, 131076, 6, 3, 65538 )
-
 [node name="Navigation2D" type="Navigation2D" parent="." groups=["navigation"]]
 script = ExtResource( 7 )
 
