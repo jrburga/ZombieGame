@@ -1,6 +1,9 @@
 extends Area2D
 class_name RoomArea2D
 
+func _ready():
+	add_to_group("rooms")
+
 func activate_room(immediate = false):
 	var light = find_node("Light2D")
 	
