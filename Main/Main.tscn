@@ -188,7 +188,7 @@ cell_size = Vector2( 20, 20 )
 cell_tile_origin = 2
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( -393219, 4, 196609, -393218, 3, 1, -393217, 3, 1, -458752, 3, 1, -458751, 3, 1, -458750, 4, 196608, -131078, 3, 0, -131077, 3, 1, -131076, 3, 196612, -131075, 4, 65540, -131074, 4, 196610, -131073, 3, 1, -196608, 4, 1, -196607, 3, 1, -196606, 4, 65540, -196605, 3, 1, -196604, 3, 1, -196603, 3, 1, -196602, 3, 2, 131066, 3, 327683, 131067, 3, 131073, 131068, 3, 131073, 131069, 3, 327684, 131070, 3, 131073, 131071, 3, 327684, 65536, 4, 131073, 65537, 3, 131073, 65538, 3, 131073, 65539, 3, 131073, 65540, 3, 131073, 65541, 3, 131073, 65542, 3, 131074 )
+tile_data = PoolIntArray( -393219, 4, 196609, -393218, 3, 1, -393217, 3, 1, -458752, 3, 1, -458751, 3, 1, -458750, 4, 196608, -327683, 4, 131076, -393214, 4, 131076, -262147, 4, 131076, -327678, 4, 131076, -196611, 4, 131076, -262142, 4, 131076, -131078, 3, 0, -131077, 3, 1, -131076, 3, 196612, -131075, 4, 65540, -131074, 4, 196610, -131073, 3, 1, -196608, 4, 1, -196607, 3, 1, -196606, 4, 65540, -196605, 3, 1, -196604, 3, 1, -196603, 3, 1, -196602, 3, 2, -65542, 3, 65536, -131072, 4, 131076, -131066, 3, 65538, -6, 3, 65536, -65536, 4, 4, -65530, 3, 65538, 65530, 3, 65536, 0, 4, 131076, 6, 3, 65538, 131066, 3, 327683, 131067, 3, 131073, 131068, 3, 131073, 131069, 3, 327684, 131070, 3, 131073, 131071, 3, 327684, 65536, 4, 131073, 65537, 3, 131073, 65538, 3, 131073, 65539, 3, 131073, 65540, 3, 131073, 65541, 3, 131073, 65542, 3, 131074 )
 
 [node name="Window3" parent="YSort/Walls" groups=["windows"] instance=ExtResource( 9 )]
 position = Vector2( -40, 40 )
@@ -206,55 +206,48 @@ state = 2
 position = Vector2( 0, 40 )
 state = 2
 
+[node name="Door" parent="YSort/Walls" instance=ExtResource( 17 )]
+position = Vector2( 16, 0 )
+z_index = 1
+
 [node name="Furniture" type="YSort" parent="YSort"]
 
 [node name="Prop_Bed" parent="YSort/Furniture" instance=ExtResource( 20 )]
 position = Vector2( 23, -112 )
-collision_layer = 256
 
 [node name="Chest" parent="YSort/Furniture" instance=ExtResource( 21 )]
 position = Vector2( -41, -112 )
-collision_layer = 256
 
 [node name="Sink" parent="YSort/Furniture" instance=ExtResource( 23 )]
 position = Vector2( 72, -33 )
-collision_layer = 256
 
 [node name="Stove" parent="YSort/Furniture" instance=ExtResource( 26 )]
 position = Vector2( 86, -33 )
-collision_layer = 256
 
 [node name="Table" parent="YSort/Furniture" instance=ExtResource( 24 )]
 position = Vector2( 88, -8 )
-collision_layer = 256
 
 [node name="Chair" parent="YSort/Furniture" instance=ExtResource( 22 )]
 position = Vector2( 97, -9 )
-collision_layer = 256
 
 [node name="Box" parent="YSort/Furniture" instance=ExtResource( 25 )]
 position = Vector2( 19, -27 )
-collision_layer = 256
 
 [node name="Box2" parent="YSort/Furniture" instance=ExtResource( 25 )]
 position = Vector2( 30, -23 )
-collision_layer = 256
 
 [node name="Chair2" parent="YSort/Furniture" instance=ExtResource( 22 )]
 position = Vector2( 86, -10 )
 scale = Vector2( -1, 1 )
-collision_layer = 256
 
 [node name="SideWalls" type="TileMap" parent="."]
+visible = false
 tile_set = ExtResource( 10 )
 cell_size = Vector2( 20, 20 )
 cell_tile_origin = 2
 cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( -327683, 4, 131076, -393214, 4, 131076, -262147, 4, 131076, -327678, 4, 131076, -196611, 4, 131076, -262142, 4, 131076, -65542, 3, 65536, -131072, 4, 131076, -131066, 3, 65538, -6, 3, 65536, -65536, 4, 4, -65530, 3, 65538, 65530, 3, 65536, 0, 4, 131076, 6, 3, 65538 )
-
-[node name="Door" parent="SideWalls" instance=ExtResource( 17 )]
-position = Vector2( 97, -71 )
 
 [node name="Navigation2D" type="Navigation2D" parent="." groups=["navigation"]]
 script = ExtResource( 7 )
