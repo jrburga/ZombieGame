@@ -16,7 +16,7 @@ func _physics_process(delta):
 		return
 		
 	var prev_pos = global_position
-	move_and_collide(velocity)
+	move_and_collide(velocity * delta)
 	var new_pos = global_position
 	
 	distance_traveled += (new_pos - prev_pos).length()

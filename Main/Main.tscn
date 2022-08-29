@@ -34,14 +34,12 @@ zoom = Vector2( 0.25, 0.25 )
 script = ExtResource( 4 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color( 0.00784314, 0, 0.0980392, 1 )
 
 [node name="Rooms" type="Node" parent="."]
 script = ExtResource( 15 )
 
 [node name="DaylightNode" type="Node2D" parent="."]
-visible = false
 script = ExtResource( 12 )
 day_length = 10
 night_length = 60.0
