@@ -9,6 +9,9 @@ var damage_details : DamageDetails = null
 
 var destroyed = false
 
+func _ready():
+	$RayCast2D.set_as_toplevel(true)
+
 var speed = 0.0
 var distance_traveled = 0
 func _physics_process(delta):
@@ -40,9 +43,19 @@ func hit_hurt_area(hurt_area : Node2D):
 		hurt_area.owner.take_damage(damage_details)
 	begin_destroy()
 	$CPUParticles2D.emitting = true
-	
+
+func _can_collide_with(area):
+	if area == null:
+		return
+	$RayCast2D.global_position = global_position
+	$RayCast2D.cast_to = area.owner.global_position - global_position
+	$RayCast2D.force_raycast_update()
+	return $RayCast2D.get_collider() == area.owner
 
 func _on_HitArea2D_area_entered(area):
+	if not _can_collide_with(area):
+		return
+	
 	set_deferred("monitoring", false)
 	if area.owner is Zombie2D:
 		hit_hurt_area(area)
