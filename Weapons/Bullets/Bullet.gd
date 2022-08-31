@@ -46,7 +46,10 @@ func hit_hurt_area(hurt_area : Node2D):
 
 func _can_collide_with(area):
 	if area == null:
+		return false
+	if not area.owner is Zombie2D:
 		return
+		
 	$RayCast2D.global_position = global_position
 	$RayCast2D.cast_to = area.owner.global_position - global_position
 	$RayCast2D.force_raycast_update()
