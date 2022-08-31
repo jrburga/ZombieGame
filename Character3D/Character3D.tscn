@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Textures3D/player-base_3D.png" type="Texture" id=1]
+[ext_resource path="res://Character3D/SpriteHandler.gd" type="Script" id=2]
+[ext_resource path="res://Character3D/Character3D.gd" type="Script" id=3]
+[ext_resource path="res://Textures3D/sprites-guns_3D.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 16
+atlas = ExtResource( 1 )
+region = Rect2( 9, 6, 5, 9 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 16
+atlas = ExtResource( 1 )
+region = Rect2( 9, 1, 4, 4 )
+
+[sub_resource type="CapsuleShape" id=3]
+radius = 0.125
+height = 0.625
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 16
+atlas = ExtResource( 4 )
+region = Rect2( 1, 6, 15, 5 )
+
+[node name="Character3D" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00211222, 0 )
+script = ExtResource( 3 )
+
+[node name="SpriteRoot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00211222, 0 )
+script = ExtResource( 2 )
+
+[node name="BodySprite3D" type="Sprite3D" parent="SpriteRoot"]
+transform = Transform( 1, 0, 0, 0, 1.25, 0, 0, 0, 1, -2.16067e-05, 0.000383161, -0.000178546 )
+centered = false
+offset = Vector2( -2, 0 )
+pixel_size = 0.0625
+texture = SubResource( 1 )
+
+[node name="HeadSprite3D" type="Sprite3D" parent="SpriteRoot"]
+transform = Transform( 1, 0, 0, 0, 1.25, 0, 0, 0, 1, 0, 0, 0 )
+centered = false
+offset = Vector2( -2, 10 )
+pixel_size = 0.0625
+texture = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.438, 0 )
+shape = SubResource( 3 )
+
+[node name="GunRoot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.469, 0 )
+
+[node name="GunSprite3D" type="Sprite3D" parent="GunRoot"]
+transform = Transform( 1, 0, 0, 0, 1.25, 0, 0, 0, 1, -0.438, -0.156, 0.094 )
+centered = false
+pixel_size = 0.0625
+texture = SubResource( 4 )

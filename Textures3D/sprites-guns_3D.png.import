@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player-base.png-e763cdce855e4e4a22e3152583a6eb4d.stex"
+path="res://.import/sprites-guns_3D.png-f6977db189ab02901bbdd41452d51d39.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/player-base.png"
-dest_files=[ "res://.import/player-base.png-e763cdce855e4e4a22e3152583a6eb4d.stex" ]
+source_file="res://Textures3D/sprites-guns_3D.png"
+dest_files=[ "res://.import/sprites-guns_3D.png-f6977db189ab02901bbdd41452d51d39.stex" ]
 
 [params]
 
@@ -23,7 +23,7 @@ flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
