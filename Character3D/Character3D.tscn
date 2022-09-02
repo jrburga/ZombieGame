@@ -5,7 +5,6 @@
 [ext_resource path="res://Textures3D/sprites-guns_3D.png" type="Texture" id=4]
 
 [sub_resource type="BoxShape" id=5]
-margin = 0.001
 extents = Vector3( 0.125, 0.438, 0.188 )
 
 [sub_resource type="AtlasTexture" id=1]
@@ -34,31 +33,31 @@ shape = SubResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0 )
 
 [node name="BodySprite3D" type="Sprite3D" parent="SpriteRoot"]
+layers = 32
 cast_shadow = 2
 centered = false
 offset = Vector2( -2, 0 )
 pixel_size = 0.0625
 shaded = true
-alpha_cut = 2
 texture = SubResource( 1 )
 
 [node name="HeadSprite3D" type="Sprite3D" parent="SpriteRoot"]
+layers = 32
 cast_shadow = 2
 centered = false
 offset = Vector2( -2, 10 )
 pixel_size = 0.0625
 shaded = true
-alpha_cut = 2
 texture = SubResource( 2 )
 
 [node name="GunRoot" type="Spatial" parent="SpriteRoot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.081, 0.25, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.081, 0.46323, 0 )
 
 [node name="GunSprite3D" type="Sprite3D" parent="SpriteRoot/GunRoot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.063, 0.094 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.3, 0.10634, 0.367098 )
+layers = 32
 cast_shadow = 2
 centered = false
 pixel_size = 0.0625
 shaded = true
-alpha_cut = 2
 texture = SubResource( 4 )
