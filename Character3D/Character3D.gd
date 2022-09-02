@@ -2,7 +2,6 @@ tool
 extends KinematicBody
 class_name Character3D
 
-export(float) var scale_correction = sqrt(2.0)
 var gravity = Vector3(0, -9.8, 0)
 var speed = 3
 
@@ -11,10 +10,6 @@ var speed = 3
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	$SpriteRoot.scale.y = scale_correction
 
 var velocity = Vector3()
 func _physics_process(delta):

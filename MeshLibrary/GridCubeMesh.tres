@@ -8,4 +8,4 @@ uv1_scale = Vector3( 3, 2, 1 )
 
 [resource]
 material = SubResource( 1 )
-size = Vector3( 1.25, 1.768, 1.768 )
+size = Vector3( 1.25, 1.25, 1.25 )

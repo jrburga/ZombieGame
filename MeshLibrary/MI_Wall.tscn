@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Textures3D/wall_tex.png" type="Texture" id=1]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="CubeMesh" id=3]
+material = SubResource( 4 )
+size = Vector3( 1.25, 0.75, 0.625 )
+
+[sub_resource type="ConcavePolygonShape" id=6]
+data = PoolVector3Array( -0.625, 0.375, 0.3125, 0.625, 0.375, 0.3125, -0.625, -0.375, 0.3125, 0.625, 0.375, 0.3125, 0.625, -0.375, 0.3125, -0.625, -0.375, 0.3125, 0.625, 0.375, -0.3125, -0.625, 0.375, -0.3125, 0.625, -0.375, -0.3125, -0.625, 0.375, -0.3125, -0.625, -0.375, -0.3125, 0.625, -0.375, -0.3125, 0.625, 0.375, 0.3125, 0.625, 0.375, -0.3125, 0.625, -0.375, 0.3125, 0.625, 0.375, -0.3125, 0.625, -0.375, -0.3125, 0.625, -0.375, 0.3125, -0.625, 0.375, -0.3125, -0.625, 0.375, 0.3125, -0.625, -0.375, -0.3125, -0.625, 0.375, 0.3125, -0.625, -0.375, 0.3125, -0.625, -0.375, -0.3125, 0.625, 0.375, 0.3125, -0.625, 0.375, 0.3125, 0.625, 0.375, -0.3125, -0.625, 0.375, 0.3125, -0.625, 0.375, -0.3125, 0.625, 0.375, -0.3125, -0.625, -0.375, 0.3125, 0.625, -0.375, 0.3125, -0.625, -0.375, -0.3125, 0.625, -0.375, 0.3125, 0.625, -0.375, -0.3125, -0.625, -0.375, -0.3125 )
+
+[node name="MI_Wall" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, 0.375, 0.313 )
+mesh = SubResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 6 )

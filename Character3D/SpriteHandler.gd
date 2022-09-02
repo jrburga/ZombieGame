@@ -7,7 +7,7 @@ extends Spatial
 # var b = "text"
 export(bool) var snapping = false
 const PIXEL_SIZE = 1.0 / 16.0
-const PIXEL_VECTOR = Vector3(PIXEL_SIZE, PIXEL_SIZE * sqrt(2.0), PIXEL_SIZE * sqrt(2.0))
+const PIXEL_VECTOR = Vector3(PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

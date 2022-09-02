@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/house_tilesheet_3D.png-79d3979280d88b84d0647c0ff108ef23.stex"
+path="res://.import/wall_tex.png-8c4c9e9952b27349bcb0b2a65ba3a4e5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures3D/house_tilesheet_3D.png"
-dest_files=[ "res://.import/house_tilesheet_3D.png-79d3979280d88b84d0647c0ff108ef23.stex" ]
+source_file="res://Textures3D/wall_tex.png"
+dest_files=[ "res://.import/wall_tex.png-8c4c9e9952b27349bcb0b2a65ba3a4e5.stex" ]
 
 [params]
 
