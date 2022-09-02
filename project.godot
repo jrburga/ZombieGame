@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Weapons/Bullets/BulletSpawner.gd"
 }, {
+"base": "Spatial",
+"class": "BulletSpawner3D",
+"language": "GDScript",
+"path": "res://Weapons/Bullets/BulletSpawner3D.gd"
+}, {
 "base": "Camera2D",
 "class": "CameraFollow2D",
 "language": "GDScript",
@@ -149,6 +154,7 @@ _global_script_class_icons={
 "Aseprite": "",
 "Bullet": "",
 "BulletSpawner": "",
+"BulletSpawner3D": "",
 "CameraFollow2D": "",
 "Character2D": "",
 "Character3D": "",

@@ -40,6 +40,14 @@ func _physics_process(delta):
 		var screen_position = camera.unproject_position($SpriteRoot/GunRoot.global_translation)
 		var mouse_position = get_viewport().get_mouse_position()
 		var angle_to_mouse = PI-screen_position.angle_to_point(mouse_position)
-		print(screen_position, "  --  ", mouse_position)
+
 		$SpriteRoot/GunRoot.rotation.z = angle_to_mouse
 		$SpriteRoot/GunRoot2.rotation.y = angle_to_mouse
+
+func _process(delta):
+	if Engine.editor_hint:
+		return
+		
+	if Input.is_action_just_pressed("attack_primary"):
+		print("attack primary pressed")
+		$SpriteRoot/GunRoot2/BulletSpawner3D.spawn_bullets()
