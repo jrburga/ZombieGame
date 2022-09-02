@@ -70,6 +70,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5,
 
 [node name="GunSprite3D" type="Sprite3D" parent="SpriteRoot/GunRoot2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.438, -0.188, 0 )
+visible = false
 layers = 32
 cast_shadow = 2
 centered = false

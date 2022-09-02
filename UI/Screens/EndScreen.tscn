@@ -11,45 +11,57 @@ anchor_bottom = 1.0
 script = ExtResource( 3 )
 
 [node name="DeathScreen" type="TextureRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
 
 [node name="RetryButton" type="TextureButton" parent="DeathScreen"]
-margin_left = 346.0
-margin_top = 303.0
-margin_right = 562.0
-margin_bottom = 343.0
+anchor_left = 0.345833
+anchor_top = 0.533333
+anchor_right = 0.620833
+anchor_bottom = 0.655556
 mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="QuitButton" type="TextureButton" parent="DeathScreen"]
-margin_left = 325.0
-margin_top = 369.0
-margin_right = 522.0
-margin_bottom = 414.0
+anchor_left = 0.322917
+anchor_top = 0.677778
+anchor_right = 0.558333
+anchor_bottom = 0.781482
 mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="WinScreen" type="TextureRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 2 )
 expand = true
 
 [node name="KeepGoing" type="TextureButton" parent="WinScreen"]
-margin_left = 265.0
-margin_top = 233.0
-margin_right = 575.0
-margin_bottom = 292.0
+anchor_left = 0.264583
+anchor_top = 0.425926
+anchor_right = 0.597917
+anchor_bottom = 0.537037
 mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Quit" type="TextureButton" parent="WinScreen"]
-margin_left = 274.0
-margin_top = 328.0
-margin_right = 577.0
-margin_bottom = 379.0
+anchor_left = 0.254167
+anchor_top = 0.603704
+anchor_right = 0.614583
+anchor_bottom = 0.711111
 mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [connection signal="pressed" from="DeathScreen/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="DeathScreen/QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -12,6 +12,7 @@ script = ExtResource( 2 )
 [node name="Sprite3D" type="Sprite3D" parent="."]
 centered = false
 pixel_size = 0.0625
+shaded = true
 texture = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

@@ -15,10 +15,13 @@ texture = ExtResource( 1 )
 expand = true
 
 [node name="PlayButton" type="TextureButton" parent="."]
-margin_left = 351.0
-margin_top = 340.0
-margin_right = 580.0
-margin_bottom = 380.0
+anchor_left = 0.364583
+anchor_top = 0.614815
+anchor_right = 0.602083
+anchor_bottom = 0.725926
 mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_TextureButton_pressed"]
