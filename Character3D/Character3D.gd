@@ -34,3 +34,12 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 	velocity.x = 0
 	velocity.z = 0
+	
+	var camera = find_node("Camera") as Camera
+	if camera:
+		var screen_position = camera.unproject_position($SpriteRoot/GunRoot.global_translation)
+		var mouse_position = get_viewport().get_mouse_position()
+		var angle_to_mouse = PI-screen_position.angle_to_point(mouse_position)
+		print(screen_position, "  --  ", mouse_position)
+		$SpriteRoot/GunRoot.rotation.z = angle_to_mouse
+		$SpriteRoot/GunRoot2.rotation.y = angle_to_mouse

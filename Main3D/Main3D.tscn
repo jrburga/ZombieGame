@@ -61,6 +61,14 @@ shadow_reverse_cull_face = true
 omni_range = 3.461
 omni_attenuation = 2.14355
 
+[node name="SpotLight2" type="SpotLight" parent="Character3D"]
+transform = Transform( 1, 0, 0, 0, -3.09133e-08, 0.707214, 0, -0.707214, -3.09133e-08, 0, 1.182, 0 )
+light_energy = 5.809
+light_negative = true
+light_cull_mask = 4294967263
+spot_range = 1.945
+spot_angle = 8.06
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 

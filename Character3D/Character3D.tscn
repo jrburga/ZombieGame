@@ -51,10 +51,23 @@ shaded = true
 texture = SubResource( 2 )
 
 [node name="GunRoot" type="Spatial" parent="SpriteRoot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.081, 0.46323, 0 )
+transform = Transform( 0.391486, -0.920184, 0, 0.920184, 0.391486, 0, 0, 0, 1, 0, 0.5, 0.063 )
 
 [node name="GunSprite3D" type="Sprite3D" parent="SpriteRoot/GunRoot"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.3, 0.10634, 0.367098 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.438, -0.188, 0 )
+layers = 32
+cast_shadow = 2
+centered = false
+pixel_size = 0.0625
+shaded = true
+texture = SubResource( 4 )
+
+[node name="GunRoot2" type="Spatial" parent="SpriteRoot"]
+transform = Transform( 0.707107, -0.707107, -3.09086e-08, 0, -4.37114e-08, 1, -0.707107, -0.707107, -3.09086e-08, 0, 0.5, 0.063 )
+
+[node name="GunSprite3D" type="Sprite3D" parent="SpriteRoot/GunRoot2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.438, -0.188, 0 )
+visible = false
 layers = 32
 cast_shadow = 2
 centered = false
