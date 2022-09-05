@@ -3,7 +3,23 @@ extends Spatial
 class_name MeshMergerTool
 
 export(bool) var merge_meshes = false setget _on_merge_meshes
+export(bool) var print_normals = false setget _on_print_normals
 
+func _on_print_normals(value):
+	if not value:
+		return
+	var meshes = get_children()
+	meshes.append(self)
+	for child in meshes:
+		var mesh_inst = child as MeshInstance
+		if not mesh_inst:
+			continue
+		var arrays_inst = mesh_inst.mesh.surface_get_arrays(0) as Array
+		var arr_normal = arrays_inst[Mesh.ARRAY_NORMAL]
+		
+		for normal in arr_normal:
+			print(normal)
+			
 func _on_merge_meshes(value):
 	if value:
 		_merge_meshes()
@@ -44,9 +60,13 @@ func _merge_meshes():
 					arr_vertex.push_back(global_vertex)
 			elif array_idx == Mesh.ARRAY_NORMAL:
 				for idx in array_inst.size():
-					arr_normal.push_back(array_inst[idx])
+					var normal = array_inst[idx] as Vector3
+					var rotated_normal = mesh_inst.transform.basis.xform(normal)
+					arr_normal.push_back(rotated_normal)
 			elif array_idx == Mesh.ARRAY_TANGENT:
 				for idx in array_inst.size():
+					var tangent = array_inst[idx]
+					print(tangent)
 					arr_tangent.push_back(array_inst[idx])
 			elif array_idx == Mesh.ARRAY_TEX_UV:
 				var uv_scale = Vector3(1, 1, 1)
