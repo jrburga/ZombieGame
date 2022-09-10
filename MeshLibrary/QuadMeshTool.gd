@@ -1,18 +1,34 @@
 tool
 extends MeshInstance
 class_name QuadMeshTool
-	
+
+export(bool) var reapply = false setget _on_reapply
 export(Vector2) var region_size = Vector2() setget _on_region_size_set
 export(Vector2) var region_offset = Vector2() setget _on_region_offset_set
+export(Vector3) var center_offset = Vector3() setget _on_center_offset_set
+
+func _on_center_offset_set(value):
+	center_offset = value
+	_update_mesh_size()
+
+func _on_reapply(value):
+	_update_material_uvs()
 
 func _on_region_size_set(value):
 	region_size = value
 	_update_material_uvs()
+	_update_mesh_size()
 	
 	
 func _on_region_offset_set(value):
 	region_offset = value
 	_update_material_uvs()
+	_update_mesh_size()
+	
+func _update_mesh_size():
+	if mesh is QuadMesh:
+		mesh.size = region_size / 16.0
+		mesh.center_offset = center_offset / 16.0
 	
 func _update_material_uvs():
 	var material = mesh.surface_get_material(0) as SpatialMaterial

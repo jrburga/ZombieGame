@@ -50,4 +50,4 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("attack_primary"):
 		print("attack primary pressed")
-		$SpriteRoot/GunRoot2/BulletSpawner3D.spawn_bullets()
+#		$SpriteRoot/GunRoot2/BulletSpawner3D.spawn_bullets()
